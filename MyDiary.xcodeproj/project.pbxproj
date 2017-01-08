@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		238BE7A8E5C3A973E2FE5ED7 /* libPods-MyDiary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BDF0A8D8B4E86D918D0213 /* libPods-MyDiary.a */; };
-		D063F6071E1FA6E3008C02BC /* MDHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D063F6051E1FA6E3008C02BC /* MDHomeTableViewCell.m */; };
-		D063F6081E1FA6E3008C02BC /* MDHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D063F6061E1FA6E3008C02BC /* MDHomeTableViewCell.xib */; };
-		D063F60B1E1FA82D008C02BC /* MDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D063F60A1E1FA82D008C02BC /* MDBaseViewController.m */; };
+		D0A31A7E1E22260A0080CEF5 /* MDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A31A751E22260A0080CEF5 /* MDBaseViewController.m */; };
+		D0A31A7F1E22260A0080CEF5 /* MDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A31A791E22260A0080CEF5 /* MDHomeViewController.m */; };
+		D0A31A801E22260A0080CEF5 /* MDHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A31A7C1E22260A0080CEF5 /* MDHomeTableViewCell.m */; };
+		D0A31A811E22260A0080CEF5 /* MDHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A31A7D1E22260A0080CEF5 /* MDHomeTableViewCell.xib */; };
+		D0A31A8A1E2230280080CEF5 /* MDEmergencyContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A31A891E2230280080CEF5 /* MDEmergencyContactsViewController.m */; };
+		D0A31A8D1E2245060080CEF5 /* MDBaseNaivgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A31A8C1E2245060080CEF5 /* MDBaseNaivgationController.m */; };
 		D0A6577C1E1E2D2800A40CB5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6577B1E1E2D2800A40CB5 /* main.m */; };
 		D0A6577F1E1E2D2800A40CB5 /* MDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6577E1E1E2D2800A40CB5 /* MDAppDelegate.m */; };
-		D0A657821E1E2D2800A40CB5 /* MDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A657811E1E2D2800A40CB5 /* MDHomeViewController.m */; };
 		D0A657851E1E2D2800A40CB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A657831E1E2D2800A40CB5 /* Main.storyboard */; };
 		D0A657871E1E2D2800A40CB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A657861E1E2D2800A40CB5 /* Assets.xcassets */; };
 		D0A6578A1E1E2D2800A40CB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A657881E1E2D2800A40CB5 /* LaunchScreen.storyboard */; };
@@ -23,17 +25,21 @@
 		6C00EF0465B556912BAAB596 /* Pods-MyDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiary.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary.release.xcconfig"; sourceTree = "<group>"; };
 		78826E25CAAC887B24A5A9A0 /* Pods-MyDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary.debug.xcconfig"; sourceTree = "<group>"; };
 		94BDF0A8D8B4E86D918D0213 /* libPods-MyDiary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyDiary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D063F6041E1FA6E3008C02BC /* MDHomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHomeTableViewCell.h; sourceTree = "<group>"; };
-		D063F6051E1FA6E3008C02BC /* MDHomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDHomeTableViewCell.m; sourceTree = "<group>"; };
-		D063F6061E1FA6E3008C02BC /* MDHomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDHomeTableViewCell.xib; sourceTree = "<group>"; };
-		D063F6091E1FA82D008C02BC /* MDBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBaseViewController.h; sourceTree = "<group>"; };
-		D063F60A1E1FA82D008C02BC /* MDBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBaseViewController.m; sourceTree = "<group>"; };
+		D0A31A741E22260A0080CEF5 /* MDBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBaseViewController.h; sourceTree = "<group>"; };
+		D0A31A751E22260A0080CEF5 /* MDBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBaseViewController.m; sourceTree = "<group>"; };
+		D0A31A781E22260A0080CEF5 /* MDHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHomeViewController.h; sourceTree = "<group>"; };
+		D0A31A791E22260A0080CEF5 /* MDHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDHomeViewController.m; sourceTree = "<group>"; };
+		D0A31A7B1E22260A0080CEF5 /* MDHomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHomeTableViewCell.h; sourceTree = "<group>"; };
+		D0A31A7C1E22260A0080CEF5 /* MDHomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDHomeTableViewCell.m; sourceTree = "<group>"; };
+		D0A31A7D1E22260A0080CEF5 /* MDHomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDHomeTableViewCell.xib; sourceTree = "<group>"; };
+		D0A31A881E2230280080CEF5 /* MDEmergencyContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDEmergencyContactsViewController.h; sourceTree = "<group>"; };
+		D0A31A891E2230280080CEF5 /* MDEmergencyContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDEmergencyContactsViewController.m; sourceTree = "<group>"; };
+		D0A31A8B1E2245060080CEF5 /* MDBaseNaivgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBaseNaivgationController.h; sourceTree = "<group>"; };
+		D0A31A8C1E2245060080CEF5 /* MDBaseNaivgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBaseNaivgationController.m; sourceTree = "<group>"; };
 		D0A657771E1E2D2800A40CB5 /* MyDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A6577B1E1E2D2800A40CB5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D0A6577D1E1E2D2800A40CB5 /* MDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDAppDelegate.h; sourceTree = "<group>"; };
 		D0A6577E1E1E2D2800A40CB5 /* MDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDAppDelegate.m; sourceTree = "<group>"; };
-		D0A657801E1E2D2800A40CB5 /* MDHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDHomeViewController.h; sourceTree = "<group>"; };
-		D0A657811E1E2D2800A40CB5 /* MDHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDHomeViewController.m; sourceTree = "<group>"; };
 		D0A657841E1E2D2800A40CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D0A657861E1E2D2800A40CB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0A657891E1E2D2800A40CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,6 +67,78 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D0A31A721E22260A0080CEF5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D0A31A871E2230040080CEF5 /* EmergencyContactsViewController */,
+				D0A31A731E22260A0080CEF5 /* BaseViewController */,
+				D0A31A761E22260A0080CEF5 /* HomeViewController */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D0A31A731E22260A0080CEF5 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0A31A741E22260A0080CEF5 /* MDBaseViewController.h */,
+				D0A31A751E22260A0080CEF5 /* MDBaseViewController.m */,
+				D0A31A8B1E2245060080CEF5 /* MDBaseNaivgationController.h */,
+				D0A31A8C1E2245060080CEF5 /* MDBaseNaivgationController.m */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		D0A31A761E22260A0080CEF5 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0A31A771E22260A0080CEF5 /* Controller */,
+				D0A31A7A1E22260A0080CEF5 /* View */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		D0A31A771E22260A0080CEF5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D0A31A781E22260A0080CEF5 /* MDHomeViewController.h */,
+				D0A31A791E22260A0080CEF5 /* MDHomeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D0A31A7A1E22260A0080CEF5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D0A31A7B1E22260A0080CEF5 /* MDHomeTableViewCell.h */,
+				D0A31A7C1E22260A0080CEF5 /* MDHomeTableViewCell.m */,
+				D0A31A7D1E22260A0080CEF5 /* MDHomeTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D0A31A821E2226150080CEF5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D0A31A831E2226150080CEF5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D0A31A871E2230040080CEF5 /* EmergencyContactsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0A31A881E2230280080CEF5 /* MDEmergencyContactsViewController.h */,
+				D0A31A891E2230280080CEF5 /* MDEmergencyContactsViewController.m */,
+			);
+			path = EmergencyContactsViewController;
+			sourceTree = "<group>";
+		};
 		D0A6576E1E1E2D2800A40CB5 = {
 			isa = PBXGroup;
 			children = (
@@ -82,15 +160,11 @@
 		D0A657791E1E2D2800A40CB5 /* MyDiary */ = {
 			isa = PBXGroup;
 			children = (
+				D0A31A821E2226150080CEF5 /* Model */,
+				D0A31A831E2226150080CEF5 /* View */,
+				D0A31A721E22260A0080CEF5 /* Controller */,
 				D0A6577D1E1E2D2800A40CB5 /* MDAppDelegate.h */,
 				D0A6577E1E1E2D2800A40CB5 /* MDAppDelegate.m */,
-				D063F6091E1FA82D008C02BC /* MDBaseViewController.h */,
-				D063F60A1E1FA82D008C02BC /* MDBaseViewController.m */,
-				D0A657801E1E2D2800A40CB5 /* MDHomeViewController.h */,
-				D0A657811E1E2D2800A40CB5 /* MDHomeViewController.m */,
-				D063F6041E1FA6E3008C02BC /* MDHomeTableViewCell.h */,
-				D063F6051E1FA6E3008C02BC /* MDHomeTableViewCell.m */,
-				D063F6061E1FA6E3008C02BC /* MDHomeTableViewCell.xib */,
 				D0A657831E1E2D2800A40CB5 /* Main.storyboard */,
 				D0A657861E1E2D2800A40CB5 /* Assets.xcassets */,
 				D0A657881E1E2D2800A40CB5 /* LaunchScreen.storyboard */,
@@ -179,7 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0A6578A1E1E2D2800A40CB5 /* LaunchScreen.storyboard in Resources */,
-				D063F6081E1FA6E3008C02BC /* MDHomeTableViewCell.xib in Resources */,
+				D0A31A811E22260A0080CEF5 /* MDHomeTableViewCell.xib in Resources */,
 				D0A657871E1E2D2800A40CB5 /* Assets.xcassets in Resources */,
 				D0A657851E1E2D2800A40CB5 /* Main.storyboard in Resources */,
 			);
@@ -240,11 +314,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D063F60B1E1FA82D008C02BC /* MDBaseViewController.m in Sources */,
-				D0A657821E1E2D2800A40CB5 /* MDHomeViewController.m in Sources */,
-				D063F6071E1FA6E3008C02BC /* MDHomeTableViewCell.m in Sources */,
 				D0A6577F1E1E2D2800A40CB5 /* MDAppDelegate.m in Sources */,
+				D0A31A7E1E22260A0080CEF5 /* MDBaseViewController.m in Sources */,
+				D0A31A7F1E22260A0080CEF5 /* MDHomeViewController.m in Sources */,
 				D0A6577C1E1E2D2800A40CB5 /* main.m in Sources */,
+				D0A31A8A1E2230280080CEF5 /* MDEmergencyContactsViewController.m in Sources */,
+				D0A31A801E22260A0080CEF5 /* MDHomeTableViewCell.m in Sources */,
+				D0A31A8D1E2245060080CEF5 /* MDBaseNaivgationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

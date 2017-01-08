@@ -44,15 +44,15 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveKeyBoradShowNotification:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveKeyBoradHideNotification:) name:UIKeyboardWillHideNotification object:nil];
     
-    [self setup];
-    [self setupView];
+    [self initData];
+    [self initView];
 }
 
 
 /**
  初始化数据
  */
-- (void)setup
+- (void)initData
 {
     self.listItemsDic = [NSMutableDictionary dictionaryWithDictionary:@{kEmergencyContacts:@(0),
                                                                         kDiary:@(0),
@@ -62,7 +62,7 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
 /**
  初始化界面
  */
-- (void)setupView
+- (void)initView
 {
     //homeTableView
     self.homeTableView.rowHeight = UITableViewAutomaticDimension;
@@ -195,7 +195,7 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
  */
 - (void)openEmergencyContacts
 {
-    
+    [self performSegueWithIdentifier:@"presentEmergencyConatacts" sender:nil];
 }
 
 
