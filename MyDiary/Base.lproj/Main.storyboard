@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MDHomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmJ-oU-u1g">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Je6-3Q-A8H">
+                                        <rect key="frame" x="-0.5" y="0.0" width="375" height="108"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.90196078431372551" green="0.55294117647058827" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Je6-3Q-A8H" firstAttribute="width" secondItem="bmJ-oU-u1g" secondAttribute="width" id="Lqo-gM-v8y"/>
+                                    <constraint firstItem="Je6-3Q-A8H" firstAttribute="height" secondItem="bmJ-oU-u1g" secondAttribute="height" id="ZsY-8i-bRD"/>
+                                    <constraint firstItem="Je6-3Q-A8H" firstAttribute="centerY" secondItem="bmJ-oU-u1g" secondAttribute="centerY" id="ecf-lm-qii"/>
+                                    <constraint firstItem="Je6-3Q-A8H" firstAttribute="centerX" secondItem="bmJ-oU-u1g" secondAttribute="centerX" id="iiz-aY-VzO"/>
+                                    <constraint firstAttribute="width" secondItem="bmJ-oU-u1g" secondAttribute="height" multiplier="125:36" id="lRo-FV-uJ4"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="erX-T3-blc">
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="KIS-C8-OMX"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="EI9-5Q-7lW"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="erX-T3-blc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="20D-dV-iUI"/>
+                            <constraint firstItem="bmJ-oU-u1g" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6W0-nZ-Pb5"/>
+                            <constraint firstItem="erX-T3-blc" firstAttribute="top" secondItem="Je6-3Q-A8H" secondAttribute="bottom" id="J1D-3I-mVG"/>
+                            <constraint firstItem="erX-T3-blc" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="UrA-aO-gqa"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="erX-T3-blc" secondAttribute="bottom" id="Wyl-h6-QtM"/>
+                            <constraint firstAttribute="trailing" secondItem="bmJ-oU-u1g" secondAttribute="trailing" id="rgr-0L-Xyx"/>
+                            <constraint firstItem="bmJ-oU-u1g" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="rjJ-iA-Fh2"/>
+                            <constraint firstItem="bmJ-oU-u1g" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vQp-oM-YVZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="raU-7V-6NS"/>
+                    <connections>
+                        <outlet property="homeTableView" destination="erX-T3-blc" id="D0S-Cl-Niw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="138.98050974512745"/>
+        </scene>
+    </scenes>
+</document>
