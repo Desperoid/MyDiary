@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,10 +23,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="rdH-X4-zgj">
-                                <rect key="frame" x="88" y="234" width="200" height="200"/>
+                                <rect key="frame" x="97.5" y="271" width="180" height="125"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="KxX-r6-urJ"/>
-                                    <constraint firstAttribute="height" constant="200" id="yhy-8D-zIN"/>
+                                    <constraint firstAttribute="width" secondItem="rdH-X4-zgj" secondAttribute="height" multiplier="36:25" id="bi4-m3-jsL"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -33,6 +33,7 @@
                         <constraints>
                             <constraint firstItem="rdH-X4-zgj" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="a9m-IR-o2w"/>
                             <constraint firstItem="rdH-X4-zgj" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fBp-nc-bor"/>
+                            <constraint firstItem="rdH-X4-zgj" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="180:667" id="psL-fk-zaY"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -42,6 +43,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="843" height="843"/>
+        <image name="logo" width="180" height="125"/>
     </resources>
 </document>

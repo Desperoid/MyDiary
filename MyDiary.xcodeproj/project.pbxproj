@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		238BE7A8E5C3A973E2FE5ED7 /* libPods-MyDiary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94BDF0A8D8B4E86D918D0213 /* libPods-MyDiary.a */; };
 		D063F6071E1FA6E3008C02BC /* MDHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D063F6051E1FA6E3008C02BC /* MDHomeTableViewCell.m */; };
 		D063F6081E1FA6E3008C02BC /* MDHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D063F6061E1FA6E3008C02BC /* MDHomeTableViewCell.xib */; };
 		D063F60B1E1FA82D008C02BC /* MDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D063F60A1E1FA82D008C02BC /* MDBaseViewController.m */; };
@@ -19,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C00EF0465B556912BAAB596 /* Pods-MyDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiary.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary.release.xcconfig"; sourceTree = "<group>"; };
+		78826E25CAAC887B24A5A9A0 /* Pods-MyDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDiary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary.debug.xcconfig"; sourceTree = "<group>"; };
+		94BDF0A8D8B4E86D918D0213 /* libPods-MyDiary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyDiary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D063F6041E1FA6E3008C02BC /* MDHomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHomeTableViewCell.h; sourceTree = "<group>"; };
 		D063F6051E1FA6E3008C02BC /* MDHomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDHomeTableViewCell.m; sourceTree = "<group>"; };
 		D063F6061E1FA6E3008C02BC /* MDHomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDHomeTableViewCell.xib; sourceTree = "<group>"; };
@@ -41,17 +45,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				238BE7A8E5C3A973E2FE5ED7 /* libPods-MyDiary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7DB2FAC84E1A868703A7AAB9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				78826E25CAAC887B24A5A9A0 /* Pods-MyDiary.debug.xcconfig */,
+				6C00EF0465B556912BAAB596 /* Pods-MyDiary.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D0A6576E1E1E2D2800A40CB5 = {
 			isa = PBXGroup;
 			children = (
 				D0A657791E1E2D2800A40CB5 /* MyDiary */,
 				D0A657781E1E2D2800A40CB5 /* Products */,
+				7DB2FAC84E1A868703A7AAB9 /* Pods */,
+				D8C5D1CF49F0033B10C44C5F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +108,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D8C5D1CF49F0033B10C44C5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				94BDF0A8D8B4E86D918D0213 /* libPods-MyDiary.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -99,9 +123,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0A6578E1E1E2D2800A40CB5 /* Build configuration list for PBXNativeTarget "MyDiary" */;
 			buildPhases = (
+				93AB1FC9D3FFDEF61F8BA7E1 /* [CP] Check Pods Manifest.lock */,
 				D0A657731E1E2D2800A40CB5 /* Sources */,
 				D0A657741E1E2D2800A40CB5 /* Frameworks */,
 				D0A657751E1E2D2800A40CB5 /* Resources */,
+				2E96462C1C14EE78C8A9322A /* [CP] Embed Pods Frameworks */,
+				2A3358F44099CD9120973B9D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -159,6 +186,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2A3358F44099CD9120973B9D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2E96462C1C14EE78C8A9322A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyDiary/Pods-MyDiary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93AB1FC9D3FFDEF61F8BA7E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D0A657731E1E2D2800A40CB5 /* Sources */ = {
@@ -285,6 +360,7 @@
 		};
 		D0A6578F1E1E2D2800A40CB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78826E25CAAC887B24A5A9A0 /* Pods-MyDiary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyDiary/Info.plist;
@@ -296,6 +372,7 @@
 		};
 		D0A657901E1E2D2800A40CB5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C00EF0465B556912BAAB596 /* Pods-MyDiary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyDiary/Info.plist;
