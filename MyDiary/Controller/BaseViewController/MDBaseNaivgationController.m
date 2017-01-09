@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,16 +28,7 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleLightContent;
-}
-
-- (void)viewDidLayoutSubviews
-{
-    for (UIView *view in self.navigationBar.subviews) {
-        if (view.frame.size.height <= 1.0) {
-            view.hidden = YES;
-        }
-    }
+    return UIStatusBarStyleDefault;
 }
 
 /*
