@@ -8,7 +8,7 @@
 
 #import "MDHomeViewController.h"
 #import "MDHomeTableViewCell.h"
-#import <IQKeyboardManager.h>
+#import "MDEmergencyContactsManager.h"
 
 static NSString * const kEmergencyContacts = @"紧急联系人";
 static NSString * const kDiary             = @"日记";
@@ -38,8 +38,6 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [IQKeyboardManager sharedManager].enable = NO;
-    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     //监听键盘
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveKeyBoradShowNotification:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveKeyBoradHideNotification:) name:UIKeyboardWillHideNotification object:nil];
@@ -57,6 +55,8 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
     self.listItemsDic = [NSMutableDictionary dictionaryWithDictionary:@{kEmergencyContacts:@(0),
                                                                         kDiary:@(0),
                                                                         kprohibition:@(0)}];
+    NSInteger contactsCount = [[[MDEmergencyContactsManager shareInstance] getAllContacts] count];
+    [self.listItemsDic setObject:@(contactsCount) forKey:kEmergencyContacts];
 }
 
 /**
@@ -91,9 +91,9 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
 }
 
 #pragma mark - Notification
-- (void)didReceiveKeyBoradShowNotification:(NSNotification *)notifcation
+- (void)didReceiveKeyBoradShowNotification:(NSNotification *)notification
 {
-    NSDictionary *userInfo = notifcation.userInfo;
+    NSDictionary *userInfo = notification.userInfo;
     CGFloat keyboardAniamtionDuraiont = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     CGRect keyboardFrame = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     NSUInteger animationCurve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
@@ -103,9 +103,9 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
     } completion:nil];
 }
 
-- (void)didReceiveKeyBoradHideNotification:(NSNotification *)notifcation
+- (void)didReceiveKeyBoradHideNotification:(NSNotification *)notification
 {
-    NSDictionary *userInfo = notifcation.userInfo;
+    NSDictionary *userInfo = notification.userInfo;
     CGFloat keyboardAniamtionDuraiont = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     NSUInteger animationCurve = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
     [UIView animateWithDuration:keyboardAniamtionDuraiont delay:0 options:animationCurve animations:^{

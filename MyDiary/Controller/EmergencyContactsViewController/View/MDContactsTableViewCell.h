@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface MDContactsTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *icon;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *telLabel;
 
 @end

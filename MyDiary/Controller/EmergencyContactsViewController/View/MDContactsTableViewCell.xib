@@ -6,32 +6,35 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="MDContactsTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBd-pK-M8x">
-                        <rect key="frame" x="81" y="13" width="49" height="24"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBd-pK-M8x">
+                        <rect key="frame" x="81" y="13" width="50" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRH-bR-MlD">
-                        <rect key="frame" x="269.5" y="53" width="35.5" height="17"/>
+                        <rect key="frame" x="269" y="37" width="36" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.14509803921568626" green="0.14509803921568626" blue="0.14509803921568626" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GyZ-4E-WtD">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_contacts_image_default" translatesAutoresizingMaskIntoConstraints="NO" id="GyZ-4E-WtD">
                         <rect key="frame" x="5" y="5" width="40" height="40"/>
+                        <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="IgY-OU-BY9"/>
                             <constraint firstAttribute="width" constant="40" id="WjC-hb-j8F"/>
@@ -44,10 +47,19 @@
                     <constraint firstItem="ZBd-pK-M8x" firstAttribute="centerY" secondItem="GyZ-4E-WtD" secondAttribute="centerY" id="VLc-Fe-4PP"/>
                     <constraint firstItem="GyZ-4E-WtD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="fBS-tV-zq3"/>
                     <constraint firstItem="GyZ-4E-WtD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="g3H-yv-0pO"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="CRH-bR-MlD" secondAttribute="bottom" id="ooj-IO-AYD"/>
                     <constraint firstAttribute="trailing" secondItem="CRH-bR-MlD" secondAttribute="trailing" constant="15" id="u0I-4o-Uoc"/>
-                    <constraint firstItem="CRH-bR-MlD" firstAttribute="top" secondItem="ZBd-pK-M8x" secondAttribute="bottom" constant="16" id="zBs-4a-ZbJ"/>
+                    <constraint firstItem="CRH-bR-MlD" firstAttribute="top" secondItem="ZBd-pK-M8x" secondAttribute="baseline" constant="5" id="zBs-4a-ZbJ"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="icon" destination="GyZ-4E-WtD" id="Yil-4Q-P8O"/>
+                <outlet property="nameLabel" destination="ZBd-pK-M8x" id="tIf-UJ-VK2"/>
+                <outlet property="telLabel" destination="CRH-bR-MlD" id="fIj-uU-pef"/>
+            </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic_contacts_image_default" width="80" height="80"/>
+    </resources>
 </document>
