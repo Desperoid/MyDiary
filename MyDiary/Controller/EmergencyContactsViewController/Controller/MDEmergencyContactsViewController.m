@@ -17,8 +17,8 @@ static NSString *const kContactsTableViewCellNibIdentifier = @"MDContactsTableVi
 static NSString *const kTableViewCellIdentifier = @"tableViewCellIdentifier";
 static NSInteger kCellHeight = 60;
 static NSInteger kCellGap = 20;
-static NSInteger kSectionHeaderHeight = 20;
-static NSInteger kSectionFooterHeight = 0.5;
+static NSInteger kSectionHeaderHeight = 60;
+static NSInteger kSectionFooterHeight = 1;
 
 @interface MDEmergencyContactsViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *contactSearchTextField;  //联络人搜索textField
@@ -46,18 +46,6 @@ static NSInteger kSectionFooterHeight = 0.5;
     
     [self initData];
     [self initView];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-//    [self.navigationController setNavigationBarHidden:YES animated:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 - (void)initData
@@ -249,16 +237,19 @@ static NSInteger kSectionFooterHeight = 0.5;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
+    if ([[self.contactsDic objectForKey:self.indexAlphabet[section]] count] > 0) {
+        return 0;
+    }
     return kSectionFooterHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     //点击空白处
     if (indexPath.row%2 != 0) {
         return;
     }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     MDEmergencyContact *contact = [self getContactWithIndexPath:indexPath];
     NSString *phoneNumebr = contact.phoneNumber;
     if (contact.phoneNumber && contact.phoneNumber > 0) {

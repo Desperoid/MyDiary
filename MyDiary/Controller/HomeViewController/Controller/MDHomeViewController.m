@@ -9,6 +9,8 @@
 #import "MDHomeViewController.h"
 #import "MDHomeTableViewCell.h"
 #import "MDEmergencyContactsManager.h"
+#import <IQKeyboardManager.h>
+#import "MDDiaryViewController.h"
 
 static NSString * const kEmergencyContacts = @"紧急联系人";
 static NSString * const kDiary             = @"日记";
@@ -38,6 +40,8 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [IQKeyboardManager sharedManager].enable = NO;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     //监听键盘
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveKeyBoradShowNotification:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveKeyBoradHideNotification:) name:UIKeyboardWillHideNotification object:nil];
@@ -204,7 +208,7 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
  */
 - (void)openDiary
 {
-    
+    [self performSegueWithIdentifier:@"presentDiary" sender:nil];
 }
 
 

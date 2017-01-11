@@ -1,0 +1,69 @@
+//
+//  MDDiaryViewController.m
+//  MyDiary
+//
+//  Created by Geng on 2017/1/11.
+//  Copyright © 2017年 Geng. All rights reserved.
+//
+
+#import "MDDiaryViewController.h"
+#import "MDBaseToolBar.h"
+
+static NSString * const kEntriesName = @"Entries";
+static NSString * const kCalendarName = @"Calendar";
+static NSString * const kDiaryName = @"Diary";
+
+@interface MDDiaryViewController ()
+@property (nonatomic, strong) UISegmentedControl *titleSegment;   //navigationbar上的segmentedControl
+@property (weak, nonatomic) IBOutlet MDBaseToolBar *footerToolBar;  //下方toolbar
+@property (weak, nonatomic) IBOutlet UITableView *EntriesTableView;
+@end
+
+@implementation MDDiaryViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self initData];
+    [self initView];
+}
+
+- (void)initData
+{
+    
+}
+
+- (void)initView
+{
+    self.titleSegment = [[UISegmentedControl alloc] initWithItems:@[kEntriesName, kCalendarName, kDiaryName]];
+    [self.titleSegment addTarget:self action:@selector(titleSegmentSelectedIndexChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.titleSegment setSelectedSegmentIndex:0];
+    [self.titleSegment setTintColor:[UIColor colorWithRed:230/255.0 green:141/255.0 blue:133/255.0 alpha:1]];
+    self.navigationItem.titleView = self.titleSegment;
+    //footer tool bar
+    [self.footerToolBar.menuButton addTarget:self action:@selector(clickMenuButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.footerToolBar.writeButton addTarget:self action:@selector(clickCameraButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.footerToolBar.cameraButton addTarget:self action:@selector(clickCameraButton:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+#pragma mark - Target Function
+- (void)clickMenuButton:(UIButton *)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)clickWriteDiaryButton:(UIButton *)sender
+{
+}
+
+- (void)clickCameraButton:(UIButton *)sender
+{
+    
+}
+
+- (void)titleSegmentSelectedIndexChanged:(UISegmentedControl *)sender
+{
+    NSLog(@"selected index:%zd",sender.selectedSegmentIndex);
+}
+
+@end

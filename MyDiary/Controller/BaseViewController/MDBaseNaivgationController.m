@@ -17,8 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //隐藏navigationbar 下方分割线
     [self.navigationBar setShadowImage:[UIImage new]];
     [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationBar.translucent = NO;
 }
 
 - (void)didReceiveMemoryWarning {
