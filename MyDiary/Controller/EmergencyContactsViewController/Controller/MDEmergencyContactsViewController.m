@@ -15,10 +15,10 @@
 static NSString *const kContactsTableViewCellNibName = @"MDContactsTableViewCell";
 static NSString *const kContactsTableViewCellNibIdentifier = @"MDContactsTableViewCellIdentifier";
 static NSString *const kTableViewCellIdentifier = @"tableViewCellIdentifier";
-static NSInteger kCellHeight = 60;
-static NSInteger kCellGap = 20;
-static NSInteger kSectionHeaderHeight = 60;
-static NSInteger kSectionFooterHeight = 1;
+static CGFloat kCellHeight = 60;
+static CGFloat kCellGap = 20;
+static CGFloat kSectionHeaderHeight = 60;
+static CGFloat kSectionFooterHeight = 1;
 
 @interface MDEmergencyContactsViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *contactSearchTextField;  //联络人搜索textField
@@ -204,6 +204,14 @@ static NSInteger kSectionFooterHeight = 1;
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
+
+    if (section < [self.indexAlphabet count]) {
+        NSString *index = self.indexAlphabet[section];
+        NSArray *contacts = self.contactsDic[index];
+        if (contacts && [contacts isKindOfClass:[NSArray class]] && [contacts count] > 0) {
+            return nil;
+        }
+    }
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, kSectionFooterHeight)];
     footerView.backgroundColor = [UIColor whiteColor];
     
@@ -237,9 +245,6 @@ static NSInteger kSectionFooterHeight = 1;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if ([[self.contactsDic objectForKey:self.indexAlphabet[section]] count] > 0) {
-        return 0;
-    }
     return kSectionFooterHeight;
 }
 

@@ -26,6 +26,11 @@
 		D0A657851E1E2D2800A40CB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A657831E1E2D2800A40CB5 /* Main.storyboard */; };
 		D0A657871E1E2D2800A40CB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A657861E1E2D2800A40CB5 /* Assets.xcassets */; };
 		D0A6578A1E1E2D2800A40CB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0A657881E1E2D2800A40CB5 /* LaunchScreen.storyboard */; };
+		D0DDE42D1E266DCD00E3BEF9 /* MDEntriesListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DDE42C1E266DCD00E3BEF9 /* MDEntriesListView.m */; };
+		D0DDE4311E26756D00E3BEF9 /* MDDiary.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DDE4301E26756D00E3BEF9 /* MDDiary.m */; };
+		D0DDE4341E267EE600E3BEF9 /* MDDiaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DDE4331E267EE600E3BEF9 /* MDDiaryManager.m */; };
+		D0DDE4381E2683CF00E3BEF9 /* MDEntriesListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DDE4361E2683CF00E3BEF9 /* MDEntriesListTableViewCell.m */; };
+		D0DDE4391E2683CF00E3BEF9 /* MDEntriesListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DDE4371E2683CF00E3BEF9 /* MDEntriesListTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +69,15 @@
 		D0A657861E1E2D2800A40CB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0A657891E1E2D2800A40CB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0A6578B1E1E2D2800A40CB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0DDE42B1E266DCD00E3BEF9 /* MDEntriesListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDEntriesListView.h; sourceTree = "<group>"; };
+		D0DDE42C1E266DCD00E3BEF9 /* MDEntriesListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDEntriesListView.m; sourceTree = "<group>"; };
+		D0DDE42F1E26756D00E3BEF9 /* MDDiary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDiary.h; sourceTree = "<group>"; };
+		D0DDE4301E26756D00E3BEF9 /* MDDiary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDiary.m; sourceTree = "<group>"; };
+		D0DDE4321E267EE600E3BEF9 /* MDDiaryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDiaryManager.h; sourceTree = "<group>"; };
+		D0DDE4331E267EE600E3BEF9 /* MDDiaryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDiaryManager.m; sourceTree = "<group>"; };
+		D0DDE4351E2683CF00E3BEF9 /* MDEntriesListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDEntriesListTableViewCell.h; sourceTree = "<group>"; };
+		D0DDE4361E2683CF00E3BEF9 /* MDEntriesListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDEntriesListTableViewCell.m; sourceTree = "<group>"; };
+		D0DDE4371E2683CF00E3BEF9 /* MDEntriesListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDEntriesListTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,8 +141,9 @@
 		D07D0E311E25F5BD00B7238E /* DiaryViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D0DDE42E1E2674A600E3BEF9 /* Model */,
+				D0DDE42A1E266DB200E3BEF9 /* UIView */,
 				D07D0E321E25F65200B7238E /* Controller */,
-				D07D0E331E25F65200B7238E /* View */,
 			);
 			name = DiaryViewController;
 			path = MyDiary/Controller/DiaryViewController;
@@ -141,13 +156,6 @@
 				D07D0E351E25F65C00B7238E /* MDDiaryViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		D07D0E331E25F65200B7238E /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		D0A31A721E22260A0080CEF5 /* Controller */ = {
@@ -205,6 +213,8 @@
 			children = (
 				D08AA8061E24719F00F36EE6 /* MDEmergencyContactsManager.h */,
 				D08AA8071E24719F00F36EE6 /* MDEmergencyContactsManager.m */,
+				D0DDE4321E267EE600E3BEF9 /* MDDiaryManager.h */,
+				D0DDE4331E267EE600E3BEF9 /* MDDiaryManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -270,6 +280,27 @@
 				D0A6577B1E1E2D2800A40CB5 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D0DDE42A1E266DB200E3BEF9 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				D0DDE42B1E266DCD00E3BEF9 /* MDEntriesListView.h */,
+				D0DDE42C1E266DCD00E3BEF9 /* MDEntriesListView.m */,
+				D0DDE4351E2683CF00E3BEF9 /* MDEntriesListTableViewCell.h */,
+				D0DDE4361E2683CF00E3BEF9 /* MDEntriesListTableViewCell.m */,
+				D0DDE4371E2683CF00E3BEF9 /* MDEntriesListTableViewCell.xib */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		D0DDE42E1E2674A600E3BEF9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D0DDE42F1E26756D00E3BEF9 /* MDDiary.h */,
+				D0DDE4301E26756D00E3BEF9 /* MDDiary.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D8C5D1CF49F0033B10C44C5F /* Frameworks */ = {
@@ -344,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0A6578A1E1E2D2800A40CB5 /* LaunchScreen.storyboard in Resources */,
+				D0DDE4391E2683CF00E3BEF9 /* MDEntriesListTableViewCell.xib in Resources */,
 				D0A31A811E22260A0080CEF5 /* MDHomeTableViewCell.xib in Resources */,
 				D0A657871E1E2D2800A40CB5 /* Assets.xcassets in Resources */,
 				D0A657851E1E2D2800A40CB5 /* Main.storyboard in Resources */,
@@ -406,6 +438,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0DDE4381E2683CF00E3BEF9 /* MDEntriesListTableViewCell.m in Sources */,
+				D0DDE4341E267EE600E3BEF9 /* MDDiaryManager.m in Sources */,
 				D05B273D1E23269B00D9606E /* MDEmergencyContactsViewController.m in Sources */,
 				D08AA8081E24719F00F36EE6 /* MDEmergencyContactsManager.m in Sources */,
 				D08AA8051E246F0800F36EE6 /* MDEmergencyContact.m in Sources */,
@@ -414,11 +448,13 @@
 				D08AA80B1E24930F00F36EE6 /* MDBaseToolBar.m in Sources */,
 				D0A31A7E1E22260A0080CEF5 /* MDBaseViewController.m in Sources */,
 				D0A31A7F1E22260A0080CEF5 /* MDHomeViewController.m in Sources */,
+				D0DDE42D1E266DCD00E3BEF9 /* MDEntriesListView.m in Sources */,
 				D0A6577C1E1E2D2800A40CB5 /* main.m in Sources */,
 				D05B27401E23270B00D9606E /* TableViewIndexView.m in Sources */,
 				D0A31A801E22260A0080CEF5 /* MDHomeTableViewCell.m in Sources */,
 				D0A31A8D1E2245060080CEF5 /* MDBaseNaivgationController.m in Sources */,
 				D07D0E361E25F65C00B7238E /* MDDiaryViewController.m in Sources */,
+				D0DDE4311E26756D00E3BEF9 /* MDDiary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
