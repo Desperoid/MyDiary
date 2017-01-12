@@ -11,6 +11,7 @@
 #import "MDEmergencyContactsManager.h"
 #import <IQKeyboardManager.h>
 #import "MDDiaryViewController.h"
+#import "UIImage+MDProtrait.h"
 
 static NSString * const kEmergencyContacts = @"紧急联系人";
 static NSString * const kDiary             = @"日记";
@@ -86,6 +87,7 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
     self.searchTextField.leftViewMode = UITextFieldViewModeAlways;
     
     //head icon
+    self.userIconImageView.image = [UIImage protraitWithImageNamed:@"head_protrait_Mitsuha"];
 }
 
 #pragma mark - Target Function

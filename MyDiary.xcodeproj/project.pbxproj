@@ -31,6 +31,11 @@
 		D0DDE4341E267EE600E3BEF9 /* MDDiaryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DDE4331E267EE600E3BEF9 /* MDDiaryManager.m */; };
 		D0DDE4381E2683CF00E3BEF9 /* MDEntriesListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DDE4361E2683CF00E3BEF9 /* MDEntriesListTableViewCell.m */; };
 		D0DDE4391E2683CF00E3BEF9 /* MDEntriesListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DDE4371E2683CF00E3BEF9 /* MDEntriesListTableViewCell.xib */; };
+		D0DDE43D1E27AF2000E3BEF9 /* UIImage+MDProtrait.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DDE43C1E27AF2000E3BEF9 /* UIImage+MDProtrait.m */; };
+		D0DDE4401E27B6A900E3BEF9 /* MDDiaryCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DDE43F1E27B6A900E3BEF9 /* MDDiaryCalendarView.m */; };
+		D0DDE4431E27B95900E3BEF9 /* MDCalendarDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DDE4421E27B95900E3BEF9 /* MDCalendarDayView.m */; };
+		D0DDE4451E27B96A00E3BEF9 /* MDCalendarDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DDE4441E27B96A00E3BEF9 /* MDCalendarDayView.xib */; };
+		D0DDE4481E27E63400E3BEF9 /* MDDateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DDE4471E27E63400E3BEF9 /* MDDateHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +83,15 @@
 		D0DDE4351E2683CF00E3BEF9 /* MDEntriesListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDEntriesListTableViewCell.h; sourceTree = "<group>"; };
 		D0DDE4361E2683CF00E3BEF9 /* MDEntriesListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDEntriesListTableViewCell.m; sourceTree = "<group>"; };
 		D0DDE4371E2683CF00E3BEF9 /* MDEntriesListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDEntriesListTableViewCell.xib; sourceTree = "<group>"; };
+		D0DDE43B1E27AF2000E3BEF9 /* UIImage+MDProtrait.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MDProtrait.h"; sourceTree = "<group>"; };
+		D0DDE43C1E27AF2000E3BEF9 /* UIImage+MDProtrait.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MDProtrait.m"; sourceTree = "<group>"; };
+		D0DDE43E1E27B6A900E3BEF9 /* MDDiaryCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDiaryCalendarView.h; sourceTree = "<group>"; };
+		D0DDE43F1E27B6A900E3BEF9 /* MDDiaryCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDiaryCalendarView.m; sourceTree = "<group>"; };
+		D0DDE4411E27B95900E3BEF9 /* MDCalendarDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCalendarDayView.h; sourceTree = "<group>"; };
+		D0DDE4421E27B95900E3BEF9 /* MDCalendarDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCalendarDayView.m; sourceTree = "<group>"; };
+		D0DDE4441E27B96A00E3BEF9 /* MDCalendarDayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDCalendarDayView.xib; sourceTree = "<group>"; };
+		D0DDE4461E27E63400E3BEF9 /* MDDateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDateHelper.h; sourceTree = "<group>"; };
+		D0DDE4471E27E63400E3BEF9 /* MDDateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDateHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,13 +143,6 @@
 				D05B27451E233D7100D9606E /* MDContactsTableViewCell.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		D05B27411E232A5700D9606E /* Util */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Util;
 			sourceTree = "<group>";
 		};
 		D07D0E311E25F5BD00B7238E /* DiaryViewController */ = {
@@ -259,7 +266,7 @@
 		D0A657791E1E2D2800A40CB5 /* MyDiary */ = {
 			isa = PBXGroup;
 			children = (
-				D05B27411E232A5700D9606E /* Util */,
+				D0DDE43A1E27AF0C00E3BEF9 /* Utils */,
 				D0A31A821E2226150080CEF5 /* Model */,
 				D0A31A831E2226150080CEF5 /* View */,
 				D0A31A721E22260A0080CEF5 /* Controller */,
@@ -290,6 +297,11 @@
 				D0DDE4351E2683CF00E3BEF9 /* MDEntriesListTableViewCell.h */,
 				D0DDE4361E2683CF00E3BEF9 /* MDEntriesListTableViewCell.m */,
 				D0DDE4371E2683CF00E3BEF9 /* MDEntriesListTableViewCell.xib */,
+				D0DDE43E1E27B6A900E3BEF9 /* MDDiaryCalendarView.h */,
+				D0DDE43F1E27B6A900E3BEF9 /* MDDiaryCalendarView.m */,
+				D0DDE4411E27B95900E3BEF9 /* MDCalendarDayView.h */,
+				D0DDE4421E27B95900E3BEF9 /* MDCalendarDayView.m */,
+				D0DDE4441E27B96A00E3BEF9 /* MDCalendarDayView.xib */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -301,6 +313,17 @@
 				D0DDE4301E26756D00E3BEF9 /* MDDiary.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D0DDE43A1E27AF0C00E3BEF9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D0DDE43B1E27AF2000E3BEF9 /* UIImage+MDProtrait.h */,
+				D0DDE43C1E27AF2000E3BEF9 /* UIImage+MDProtrait.m */,
+				D0DDE4461E27E63400E3BEF9 /* MDDateHelper.h */,
+				D0DDE4471E27E63400E3BEF9 /* MDDateHelper.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		D8C5D1CF49F0033B10C44C5F /* Frameworks */ = {
@@ -379,6 +402,7 @@
 				D0A31A811E22260A0080CEF5 /* MDHomeTableViewCell.xib in Resources */,
 				D0A657871E1E2D2800A40CB5 /* Assets.xcassets in Resources */,
 				D0A657851E1E2D2800A40CB5 /* Main.storyboard in Resources */,
+				D0DDE4451E27B96A00E3BEF9 /* MDCalendarDayView.xib in Resources */,
 				D05B27471E233D7100D9606E /* MDContactsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,14 +464,18 @@
 			files = (
 				D0DDE4381E2683CF00E3BEF9 /* MDEntriesListTableViewCell.m in Sources */,
 				D0DDE4341E267EE600E3BEF9 /* MDDiaryManager.m in Sources */,
+				D0DDE4481E27E63400E3BEF9 /* MDDateHelper.m in Sources */,
+				D0DDE4431E27B95900E3BEF9 /* MDCalendarDayView.m in Sources */,
 				D05B273D1E23269B00D9606E /* MDEmergencyContactsViewController.m in Sources */,
 				D08AA8081E24719F00F36EE6 /* MDEmergencyContactsManager.m in Sources */,
 				D08AA8051E246F0800F36EE6 /* MDEmergencyContact.m in Sources */,
+				D0DDE43D1E27AF2000E3BEF9 /* UIImage+MDProtrait.m in Sources */,
 				D05B27461E233D7100D9606E /* MDContactsTableViewCell.m in Sources */,
 				D0A6577F1E1E2D2800A40CB5 /* MDAppDelegate.m in Sources */,
 				D08AA80B1E24930F00F36EE6 /* MDBaseToolBar.m in Sources */,
 				D0A31A7E1E22260A0080CEF5 /* MDBaseViewController.m in Sources */,
 				D0A31A7F1E22260A0080CEF5 /* MDHomeViewController.m in Sources */,
+				D0DDE4401E27B6A900E3BEF9 /* MDDiaryCalendarView.m in Sources */,
 				D0DDE42D1E266DCD00E3BEF9 /* MDEntriesListView.m in Sources */,
 				D0A6577C1E1E2D2800A40CB5 /* main.m in Sources */,
 				D05B27401E23270B00D9606E /* TableViewIndexView.m in Sources */,

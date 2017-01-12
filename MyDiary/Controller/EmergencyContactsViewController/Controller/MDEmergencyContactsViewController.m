@@ -11,6 +11,7 @@
 #import "MDContactsTableViewCell.h"
 #import "MDEmergencyContactsManager.h"
 #import "MDBaseToolBar.h"
+#import "UIImage+MDProtrait.h"
 
 static NSString *const kContactsTableViewCellNibName = @"MDContactsTableViewCell";
 static NSString *const kContactsTableViewCellNibIdentifier = @"MDContactsTableViewCellIdentifier";
@@ -226,6 +227,7 @@ static CGFloat kSectionFooterHeight = 1;
         MDEmergencyContact *contact = [self getContactWithIndexPath:indexPath];
         cTabelViewCell.nameLabel.text = contact.contactName;
         cTabelViewCell.telLabel.text = contact.phoneNumber;
+        cTabelViewCell.icon.image = [UIImage protraitWithImageNamed:@"head_protrait_TAKI"];
     }
     
 }

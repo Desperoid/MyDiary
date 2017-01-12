@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MDCalendarDayView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSc-66-cnI">
+                    <rect key="frame" x="146" y="159" width="83" height="95.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41m-KF-4Th">
+                    <rect key="frame" x="170.5" y="254.5" width="33.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="August" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQj-0N-C5D">
+                    <rect key="frame" x="153" y="127.5" width="69.5" height="26.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="41m-KF-4Th" firstAttribute="top" secondItem="SSc-66-cnI" secondAttribute="bottom" id="0h8-v4-ET8"/>
+                <constraint firstItem="SSc-66-cnI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="ENq-K5-cay"/>
+                <constraint firstItem="SSc-66-cnI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="159" id="EzH-J2-mRl"/>
+                <constraint firstItem="41m-KF-4Th" firstAttribute="centerX" secondItem="SSc-66-cnI" secondAttribute="centerX" id="GmW-Bw-HPi"/>
+                <constraint firstItem="SSc-66-cnI" firstAttribute="top" secondItem="sQj-0N-C5D" secondAttribute="bottom" constant="5" id="PUX-z8-PeN"/>
+                <constraint firstItem="sQj-0N-C5D" firstAttribute="centerX" secondItem="SSc-66-cnI" secondAttribute="centerX" id="Sia-si-dMY"/>
+                <constraint firstItem="41m-KF-4Th" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="fEk-Lk-xNj"/>
+                <constraint firstItem="SSc-66-cnI" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="p15-Jc-ZWv"/>
+                <constraint firstItem="sQj-0N-C5D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="uot-he-ISv"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="MonthLabel" destination="sQj-0N-C5D" id="N7B-TV-nfz"/>
+                <outlet property="dayLabel" destination="SSc-66-cnI" id="zyz-Kh-Ubq"/>
+                <outlet property="yearLabel" destination="41m-KF-4Th" id="fz1-hZ-z5G"/>
+            </connections>
+            <point key="canvasLocation" x="68.5" y="99"/>
+        </view>
+    </objects>
+</document>

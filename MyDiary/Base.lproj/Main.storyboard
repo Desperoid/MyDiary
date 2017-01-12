@@ -339,11 +339,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vdb-rd-hxY" userLabel="Body View">
                                 <rect key="frame" x="0.0" y="102" width="375" height="515"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fo5-Lf-v3y" userLabel="DiaryView">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fo5-Lf-v3y" userLabel="DiaryView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="515"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZsI-Ig-EVU" userLabel="CalendarView">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZsI-Ig-EVU" userLabel="CalendarView" customClass="MDDiaryCalendarView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="515"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
@@ -389,6 +389,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="XgS-7f-O0i"/>
                     <connections>
+                        <outlet property="calendaryView" destination="ZsI-Ig-EVU" id="hFu-YV-OPm"/>
+                        <outlet property="diaryView" destination="Fo5-Lf-v3y" id="cnp-Fh-XOx"/>
+                        <outlet property="entiresListView" destination="cHS-4W-a6f" id="Grg-Vy-OUx"/>
                         <outlet property="footerToolBar" destination="61t-p7-g9v" id="TZY-6v-4pL"/>
                     </connections>
                 </viewController>

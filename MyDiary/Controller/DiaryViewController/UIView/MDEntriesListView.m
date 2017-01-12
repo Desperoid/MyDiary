@@ -9,6 +9,7 @@
 #import "MDEntriesListView.h"
 #import "MDDiaryManager.h"
 #import "MDEntriesListTableViewCell.h"
+#import "MDDateHelper.h"
 static NSString * const kEntriesListTableCellNib = @"MDEntriesListTableViewCell";
 static NSString * const kEntriesListTableCellIdentifier = @"entriesListTableViewCellIdentifier";
 static NSString * const kEntriesListTableGapCellIdentifier = @"entriesListTableGapCellIdentifier";
@@ -126,7 +127,7 @@ static CGFloat kTableViewCellGap = 20.0f;
                 MDDiary *diary = diaryGroupArray[diaryIndex];
                 entiresCell.titleLabel.text = diary.diaryTitle;
                 entiresCell.contentLabel.text = diary.diaryContent;
-                NSDateComponents *components = [self dateComponentsWithDate:diary.diaryDate];
+                NSDateComponents *components = [MDDateHelper dateComponentsWithDate:diary.diaryDate];
                 NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
                 dateformatter.timeZone = components.timeZone;
                 dateformatter.locale = components.calendar.locale;
@@ -151,7 +152,7 @@ static CGFloat kTableViewCellGap = 20.0f;
     headerLabel.backgroundColor = [UIColor clearColor];
     if (section < [[self.diaryEntriesDic allKeys] count]) {
         NSDate *MonthDate = [[self.diaryEntriesDic allKeys] objectAtIndex:section];
-        NSDateComponents *components = [self dateComponentsWithDate:MonthDate];
+        NSDateComponents *components = [MDDateHelper dateComponentsWithDate:MonthDate];
         NSString *headerText;
         if (components.month == 1) {
             headerText = [NSString stringWithFormat:@"%zd.%zd",components.year,components.month];
@@ -209,16 +210,6 @@ static CGFloat kTableViewCellGap = 20.0f;
     }
     
     return resultDic;
-}
-
-- (NSDateComponents *)dateComponentsWithDate:( NSDate * _Nonnull  )date
-{
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    calendar.timeZone = [NSTimeZone localTimeZone];
-    calendar.locale = [NSLocale currentLocale];
-    NSDateComponents *components = [calendar components:NSCalendarUnitMonth|NSCalendarUnitYear|NSCalendarUnitDay|NSCalendarUnitWeekday|NSCalendarUnitHour|NSCalendarUnitMinute
-                                               fromDate:date];
-    return components;
 }
 
 @end

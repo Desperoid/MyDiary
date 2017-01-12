@@ -34,7 +34,6 @@
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_contacts_image_default" translatesAutoresizingMaskIntoConstraints="NO" id="GyZ-4E-WtD">
                         <rect key="frame" x="5" y="5" width="40" height="40"/>
-                        <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="IgY-OU-BY9"/>
                             <constraint firstAttribute="width" constant="40" id="WjC-hb-j8F"/>

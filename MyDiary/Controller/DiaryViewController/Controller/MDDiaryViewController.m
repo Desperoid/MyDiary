@@ -8,6 +8,8 @@
 
 #import "MDDiaryViewController.h"
 #import "MDBaseToolBar.h"
+#import "MDDiaryCalendarView.h"
+#import "MDEntriesListView.h"
 
 static NSString * const kEntriesName = @"Entries";
 static NSString * const kCalendarName = @"Calendar";
@@ -16,7 +18,10 @@ static NSString * const kDiaryName = @"Diary";
 @interface MDDiaryViewController ()
 @property (nonatomic, strong) UISegmentedControl *titleSegment;   //navigationbar上的segmentedControl
 @property (weak, nonatomic) IBOutlet MDBaseToolBar *footerToolBar;  //下方toolbar
-@property (weak, nonatomic) IBOutlet UITableView *EntriesTableView;
+@property (weak, nonatomic) IBOutlet UIView *diaryView;
+@property (weak, nonatomic) IBOutlet MDDiaryCalendarView *calendaryView;
+@property (weak, nonatomic) IBOutlet MDEntriesListView *entiresListView;
+
 @end
 
 @implementation MDDiaryViewController
@@ -64,6 +69,28 @@ static NSString * const kDiaryName = @"Diary";
 - (void)titleSegmentSelectedIndexChanged:(UISegmentedControl *)sender
 {
     NSLog(@"selected index:%zd",sender.selectedSegmentIndex);
+    switch (sender.selectedSegmentIndex) {
+        case 0:{
+            self.entiresListView.hidden = NO;
+            self.calendaryView.hidden = YES;
+            self.diaryView.hidden = YES;
+        }
+            break;
+        case 1: {
+            self.entiresListView.hidden = YES;
+            self.calendaryView.hidden = NO;
+            self.diaryView.hidden = YES;
+        }
+            break;
+        case 2: {
+            self.entiresListView.hidden = YES;
+            self.calendaryView.hidden = YES;
+            self.diaryView.hidden = NO;
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 @end
