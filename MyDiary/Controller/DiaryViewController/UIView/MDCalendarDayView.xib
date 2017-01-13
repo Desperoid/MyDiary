@@ -16,21 +16,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSc-66-cnI">
-                    <rect key="frame" x="146" y="159" width="83" height="95.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="80"/>
-                    <nil key="textColor"/>
+                    <rect key="frame" x="84" y="91" width="207.5" height="239"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="200"/>
+                    <color key="textColor" red="0.90196078430000004" green="0.55294117649999996" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41m-KF-4Th">
-                    <rect key="frame" x="170.5" y="254.5" width="33.5" height="18"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <nil key="textColor"/>
+                    <rect key="frame" x="154" y="330" width="66.5" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <color key="textColor" red="0.90196078430000004" green="0.55294117649999996" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="August" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQj-0N-C5D">
-                    <rect key="frame" x="153" y="127.5" width="69.5" height="26.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                    <nil key="textColor"/>
+                    <rect key="frame" x="140.5" y="50" width="94.5" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <color key="textColor" red="0.90196078430000004" green="0.55294117649999996" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -38,11 +38,11 @@
             <constraints>
                 <constraint firstItem="41m-KF-4Th" firstAttribute="top" secondItem="SSc-66-cnI" secondAttribute="bottom" id="0h8-v4-ET8"/>
                 <constraint firstItem="SSc-66-cnI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="ENq-K5-cay"/>
-                <constraint firstItem="SSc-66-cnI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="159" id="EzH-J2-mRl"/>
                 <constraint firstItem="41m-KF-4Th" firstAttribute="centerX" secondItem="SSc-66-cnI" secondAttribute="centerX" id="GmW-Bw-HPi"/>
                 <constraint firstItem="SSc-66-cnI" firstAttribute="top" secondItem="sQj-0N-C5D" secondAttribute="bottom" constant="5" id="PUX-z8-PeN"/>
                 <constraint firstItem="sQj-0N-C5D" firstAttribute="centerX" secondItem="SSc-66-cnI" secondAttribute="centerX" id="Sia-si-dMY"/>
                 <constraint firstItem="41m-KF-4Th" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="fEk-Lk-xNj"/>
+                <constraint firstItem="sQj-0N-C5D" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="hPt-qw-sXg"/>
                 <constraint firstItem="SSc-66-cnI" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="p15-Jc-ZWv"/>
                 <constraint firstItem="sQj-0N-C5D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="uot-he-ISv"/>
             </constraints>

@@ -319,13 +319,24 @@
                                         <color key="textColor" red="0.90196078430000004" green="0.55294117649999996" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Opz-O6-RzD" userLabel="SeperatorView">
+                                        <rect key="frame" x="0.0" y="37.5" width="375" height="0.5"/>
+                                        <color key="backgroundColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="Y13-MN-RDz"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Syz-HN-MbE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Go3-vy-4em" secondAttribute="leading" constant="15" id="0Ls-lI-u7u"/>
+                                    <constraint firstAttribute="trailing" secondItem="Opz-O6-RzD" secondAttribute="trailing" id="9Iv-A8-A2E"/>
+                                    <constraint firstItem="Opz-O6-RzD" firstAttribute="centerX" secondItem="Go3-vy-4em" secondAttribute="centerX" id="KjR-Ee-614"/>
                                     <constraint firstItem="Syz-HN-MbE" firstAttribute="centerX" secondItem="Go3-vy-4em" secondAttribute="centerX" id="WaO-Zi-NkT"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Syz-HN-MbE" secondAttribute="trailing" constant="15" id="fOf-uj-tRs"/>
+                                    <constraint firstAttribute="bottom" secondItem="Opz-O6-RzD" secondAttribute="bottom" id="oIo-fe-13f"/>
                                     <constraint firstItem="Syz-HN-MbE" firstAttribute="centerY" secondItem="Go3-vy-4em" secondAttribute="centerY" id="rr2-Js-Mv9"/>
+                                    <constraint firstItem="Opz-O6-RzD" firstAttribute="leading" secondItem="Go3-vy-4em" secondAttribute="leading" id="slA-Y9-qVo"/>
                                     <constraint firstAttribute="height" constant="38" id="tTU-ts-xAm"/>
                                 </constraints>
                             </view>

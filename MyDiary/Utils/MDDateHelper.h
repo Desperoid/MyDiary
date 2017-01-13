@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface MDDateHelper : NSObject
-+ (NSDateComponents * _Nonnull)dateComponentsWithDate:( NSDate * _Nonnull  )date;
++ (NSDateComponents *)dateComponentsWithDate:( NSDate *)date;
 
 + (NSDate*)nextDayFromDay:(NSDate*)date;
 

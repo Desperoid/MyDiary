@@ -11,8 +11,12 @@ static NSCalendar *calendar;
 static NSDateFormatter *dateFormatter;
 
 @implementation MDDateHelper
-+ (NSDateComponents *)dateComponentsWithDate:( NSDate * _Nonnull  )date
++ (NSDateComponents *)dateComponentsWithDate:( NSDate *)date
 {
+    if (!date) {
+        return nil;
+        
+    }
     if (!calendar) {
        calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
         calendar.timeZone = [NSTimeZone localTimeZone];
