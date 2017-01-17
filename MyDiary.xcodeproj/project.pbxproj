@@ -12,6 +12,7 @@
 		D05B27401E23270B00D9606E /* TableViewIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = D05B273F1E23270B00D9606E /* TableViewIndexView.m */; };
 		D05B27461E233D7100D9606E /* MDContactsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D05B27441E233D7100D9606E /* MDContactsTableViewCell.m */; };
 		D05B27471E233D7100D9606E /* MDContactsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05B27451E233D7100D9606E /* MDContactsTableViewCell.xib */; };
+		D06A98051E2E2CD000BFCBE3 /* MDMemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D06A98041E2E2CD000BFCBE3 /* MDMemoViewController.m */; };
 		D07D0E361E25F65C00B7238E /* MDDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D0E351E25F65C00B7238E /* MDDiaryViewController.m */; };
 		D08AA8051E246F0800F36EE6 /* MDEmergencyContact.m in Sources */ = {isa = PBXBuildFile; fileRef = D08AA8041E246F0800F36EE6 /* MDEmergencyContact.m */; };
 		D08AA8081E24719F00F36EE6 /* MDEmergencyContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D08AA8071E24719F00F36EE6 /* MDEmergencyContactsManager.m */; };
@@ -49,6 +50,8 @@
 		D05B27431E233D7100D9606E /* MDContactsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDContactsTableViewCell.h; sourceTree = "<group>"; };
 		D05B27441E233D7100D9606E /* MDContactsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDContactsTableViewCell.m; sourceTree = "<group>"; };
 		D05B27451E233D7100D9606E /* MDContactsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDContactsTableViewCell.xib; sourceTree = "<group>"; };
+		D06A98031E2E2CD000BFCBE3 /* MDMemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMemoViewController.h; sourceTree = "<group>"; };
+		D06A98041E2E2CD000BFCBE3 /* MDMemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMemoViewController.m; sourceTree = "<group>"; };
 		D07D0E341E25F65C00B7238E /* MDDiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDiaryViewController.h; sourceTree = "<group>"; };
 		D07D0E351E25F65C00B7238E /* MDDiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDiaryViewController.m; sourceTree = "<group>"; };
 		D08AA8031E246F0800F36EE6 /* MDEmergencyContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDEmergencyContact.h; sourceTree = "<group>"; };
@@ -145,6 +148,23 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D06A98011E2E2CAF00BFCBE3 /* MemoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D06A98021E2E2CBD00BFCBE3 /* Controller */,
+			);
+			path = MemoViewController;
+			sourceTree = "<group>";
+		};
+		D06A98021E2E2CBD00BFCBE3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D06A98031E2E2CD000BFCBE3 /* MDMemoViewController.h */,
+				D06A98041E2E2CD000BFCBE3 /* MDMemoViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		D07D0E311E25F5BD00B7238E /* DiaryViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +188,7 @@
 		D0A31A721E22260A0080CEF5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D06A98011E2E2CAF00BFCBE3 /* MemoViewController */,
 				D07D0E311E25F5BD00B7238E /* DiaryViewController */,
 				D0A31A871E2230040080CEF5 /* EmergencyContactsViewController */,
 				D0A31A731E22260A0080CEF5 /* BaseViewController */,
@@ -475,6 +496,7 @@
 				D08AA80B1E24930F00F36EE6 /* MDBaseToolBar.m in Sources */,
 				D0A31A7E1E22260A0080CEF5 /* MDBaseViewController.m in Sources */,
 				D0A31A7F1E22260A0080CEF5 /* MDHomeViewController.m in Sources */,
+				D06A98051E2E2CD000BFCBE3 /* MDMemoViewController.m in Sources */,
 				D0DDE4401E27B6A900E3BEF9 /* MDDiaryCalendarView.m in Sources */,
 				D0DDE42D1E266DCD00E3BEF9 /* MDEntriesListView.m in Sources */,
 				D0A6577C1E1E2D2800A40CB5 /* main.m in Sources */,

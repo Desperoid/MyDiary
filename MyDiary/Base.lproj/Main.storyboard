@@ -428,10 +428,64 @@
             </objects>
             <point key="canvasLocation" x="1989.5999999999999" y="903.59820089955031"/>
         </scene>
+        <!--Memo View Controller-->
+        <scene sceneID="Ijy-4a-ubn">
+            <objects>
+                <viewController id="0uM-2S-T2H" customClass="MDMemoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Idj-gQ-rJv"/>
+                        <viewControllerLayoutGuide type="bottom" id="GKS-7D-nEf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JCZ-jz-yHK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4YA-gS-SeD">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4YA-gS-SeD" firstAttribute="bottom" secondItem="GKS-7D-nEf" secondAttribute="top" id="9sM-sS-PNu"/>
+                            <constraint firstAttribute="trailing" secondItem="4YA-gS-SeD" secondAttribute="trailing" id="MHF-Lo-06r"/>
+                            <constraint firstItem="4YA-gS-SeD" firstAttribute="top" secondItem="Idj-gQ-rJv" secondAttribute="bottom" id="rhl-Ov-7is"/>
+                            <constraint firstItem="4YA-gS-SeD" firstAttribute="leading" secondItem="JCZ-jz-yHK" secondAttribute="leading" id="t2o-RD-qeO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZPA-gu-7Dl">
+                        <barButtonItem key="rightBarButtonItem" image="ic_mode_edit_white_24dp" style="plain" id="5vP-1h-whP">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bJd-yg-5mX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2932" y="1595.352323838081"/>
+        </scene>
+        <!--Base Naivgation Controller-->
+        <scene sceneID="zv2-4P-hwE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q2b-ho-1ka" customClass="MDBaseNaivgationController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RR3-f6-V2C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0uM-2S-T2H" kind="relationship" relationship="rootViewController" id="NqV-ac-bHp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rnc-KF-WQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1992.8" y="1594.4527736131936"/>
+        </scene>
     </scenes>
     <resources>
         <image name="contacts_bg_mitsuha" width="360" height="640"/>
         <image name="ic_contacts_image_default" width="80" height="80"/>
+        <image name="ic_mode_edit_white_24dp" width="24" height="24"/>
         <image name="ic_settings_black_24dp" width="24" height="24"/>
     </resources>
 </document>
