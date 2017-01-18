@@ -219,7 +219,7 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
  */
 - (void)openProhibition
 {
-    
+    [self performSegueWithIdentifier:@"presentMemo" sender:nil];
 }
 
 

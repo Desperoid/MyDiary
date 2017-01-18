@@ -7,6 +7,7 @@
 //
 
 #import "MDMemoViewController.h"
+#import "MDDiaryThemeManager.h"
 
 @interface MDMemoViewController ()
 
@@ -17,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.navigationController.navigationBar setBarTintColor:[[MDDiaryThemeManager shareInstance] themeMainColor]];
+    [self.navigationController.navigationBar setTintColor:[[MDDiaryThemeManager shareInstance] themeTextColor]];
 }
 
 - (void)didReceiveMemoryWarning {

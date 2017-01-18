@@ -147,6 +147,7 @@
                         <outlet property="userShortNameLabel" destination="Jau-Hw-dv3" id="P6E-wi-FZS"/>
                         <segue destination="CDv-Hy-UYm" kind="presentation" identifier="presentEmergencyConatacts" modalPresentationStyle="fullScreen" id="drZ-x3-uFD"/>
                         <segue destination="GnP-OC-apU" kind="show" identifier="presentDiary" id="unf-cV-FuX"/>
+                        <segue destination="q2b-ho-1ka" kind="show" identifier="presentMemo" id="aCJ-Uv-FCF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
