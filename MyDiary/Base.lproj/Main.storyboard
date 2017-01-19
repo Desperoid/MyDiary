@@ -147,7 +147,7 @@
                         <outlet property="userShortNameLabel" destination="Jau-Hw-dv3" id="P6E-wi-FZS"/>
                         <segue destination="CDv-Hy-UYm" kind="presentation" identifier="presentEmergencyConatacts" modalPresentationStyle="fullScreen" id="drZ-x3-uFD"/>
                         <segue destination="GnP-OC-apU" kind="show" identifier="presentDiary" id="unf-cV-FuX"/>
-                        <segue destination="q2b-ho-1ka" kind="show" identifier="presentMemo" id="aCJ-Uv-FCF"/>
+                        <segue destination="q2b-ho-1ka" kind="show" identifier="presentMemo" id="DKT-YL-xnk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -441,9 +441,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4YA-gS-SeD">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4YA-gS-SeD">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="0uM-2S-T2H" id="JMD-U0-m7b"/>
+                                    <outlet property="delegate" destination="0uM-2S-T2H" id="sCx-AI-bsy"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -459,6 +463,9 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="memoTableView" destination="4YA-gS-SeD" id="rbm-N1-kjQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJd-yg-5mX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

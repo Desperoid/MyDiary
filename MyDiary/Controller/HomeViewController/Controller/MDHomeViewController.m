@@ -12,6 +12,7 @@
 #import <IQKeyboardManager.h>
 #import "MDDiaryViewController.h"
 #import "UIImage+MDProtrait.h"
+#import "MDMemoViewController.h"
 
 static NSString * const kEmergencyContacts = @"紧急联系人";
 static NSString * const kDiary             = @"日记";
@@ -192,6 +193,20 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     
+}
+
+#pragma mark - segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    MDHomeTableViewCell *cell = (MDHomeTableViewCell *)sender;
+    NSString *title = cell.titleLabel.text;
+    if ([segue.identifier isEqualToString:@"presentMemo"]) {
+        MDMemoViewController *destController = ((UINavigationController *)[segue destinationViewController]).topViewController;
+        destController.title = title;
+        destController.allMemos = @{@"胡萝卜":@(YES),
+                                    @"茄子":@(NO),
+                                    @"黄瓜":@(YES)};
+    }
 }
 
 #pragma mark - Private Function
