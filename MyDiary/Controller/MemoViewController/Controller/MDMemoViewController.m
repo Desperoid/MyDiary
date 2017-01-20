@@ -23,8 +23,6 @@ static NSString *const kMemoTableViewCellName = @"MDMemoTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.navigationController.navigationBar setBarTintColor:[[MDDiaryThemeManager shareInstance] themeMainColor]];
-    [self.navigationController.navigationBar setTintColor:[[MDDiaryThemeManager shareInstance] themeTextColor]];
     [self initData];
     [self initView];
 }
@@ -36,6 +34,10 @@ static NSString *const kMemoTableViewCellName = @"MDMemoTableViewCell";
 
 - (void)initView
 {
+    //navigationbar
+    [self.navigationController.navigationBar setBarTintColor:[[MDDiaryThemeManager shareInstance] themeMainColor]];
+    [self.navigationController.navigationBar setTintColor:[[MDDiaryThemeManager shareInstance] themeTextColor]];
+    self.navigationItem.hidesBackButton = YES;
     //tableview
     self.memoTableView.tableFooterView = [[UIView alloc] init];
     [self.memoTableView registerNib:[UINib nibWithNibName:kMemoTableViewCellName bundle:nil] forCellReuseIdentifier:kMemoTableViewCellIdentifier];

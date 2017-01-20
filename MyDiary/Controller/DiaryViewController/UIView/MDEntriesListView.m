@@ -179,6 +179,24 @@ static CGFloat kTableViewCellGap = 20.0f;
     return kTableViewHeaderHeight;
 }
 
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认删除此条记录" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [tableView setEditing:NO animated:YES];
+        }];
+        UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [tableView setEditing:NO animated:YES];
+            //DOTO:删除记录
+        }];
+        [alert addAction:cancel];
+        [alert addAction:confirm];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+    }];
+    return @[deleteAction];
+}
+
 #pragma mark - Private Function
 
 /**

@@ -17,12 +17,19 @@ typedef NS_ENUM(NSUInteger, MDDiaryWeather) {
     MDDiaryWeatherfoggy,
 };
 
+typedef NS_ENUM(NSUInteger, MDDiaryMood) {
+    MDDiaryMoodHappy,
+    MDDiaryMoodSoso,
+    MDDiaryMoodUnhappy,
+};
+
 @interface MDDiary : NSObject
 NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *diaryTitle;
 @property (nonatomic, strong) NSString *diaryContent;
 @property (nonatomic, strong) NSDate   *diaryDate;
 @property (nonatomic, assign) MDDiaryWeather weather;
+@property (nonatomic, assign) MDDiaryMood mood;
 @property (nonatomic, copy)   NSArray<NSString*> *tags;
 NS_ASSUME_NONNULL_END
 @end

@@ -73,6 +73,10 @@ static CGFloat kSectionFooterHeight = 1;
     titleLabel.text = @"紧急联系人";
     self.navigationItem.titleView = titleLabel;
     
+    self.navigationItem.hidesBackButton = YES;
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    
     //searchTextField
     UIImage *img = [UIImage imageNamed:@"ic_search_white_18dp"];
     UIImageView *searchLeftView = [[UIImageView alloc] initWithImage:img];
@@ -111,7 +115,7 @@ static CGFloat kSectionFooterHeight = 1;
 #pragma mark - Target Function
 - (void)clickMenuButton:(UIButton *)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)clickWriteDiaryButton:(UIButton *)sender

@@ -52,6 +52,17 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
     [self initView];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
 
 /**
  初始化数据
@@ -152,8 +163,10 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
                 break;
             case 1:
                 [self openDiary];
+                break;
             case 2:
                 [self openProhibition];
+                break;
             default:
                 break;
         }
@@ -201,7 +214,7 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
     MDHomeTableViewCell *cell = (MDHomeTableViewCell *)sender;
     NSString *title = cell.titleLabel.text;
     if ([segue.identifier isEqualToString:@"presentMemo"]) {
-        MDMemoViewController *destController = ((UINavigationController *)[segue destinationViewController]).topViewController;
+        MDMemoViewController *destController = (MDMemoViewController *)[segue destinationViewController];
         destController.title = title;
         destController.allMemos = @{@"胡萝卜":@(YES),
                                     @"茄子":@(NO),

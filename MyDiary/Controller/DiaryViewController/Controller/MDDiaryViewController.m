@@ -40,6 +40,10 @@ static NSString * const kDiaryName = @"Diary";
 
 - (void)initView
 {
+    //navigationabr
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    //titleView
     self.titleSegment = [[UISegmentedControl alloc] initWithItems:@[kEntriesName, kCalendarName, kDiaryName]];
     [self.titleSegment addTarget:self action:@selector(titleSegmentSelectedIndexChanged:) forControlEvents:UIControlEventValueChanged];
     [self.titleSegment setSelectedSegmentIndex:0];
@@ -54,7 +58,7 @@ static NSString * const kDiaryName = @"Diary";
 #pragma mark - Target Function
 - (void)clickMenuButton:(UIButton *)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)clickWriteDiaryButton:(UIButton *)sender
