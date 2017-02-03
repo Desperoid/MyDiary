@@ -425,6 +425,9 @@
                     <navigationItem key="navigationItem" id="ZPA-gu-7Dl">
                         <barButtonItem key="rightBarButtonItem" image="ic_mode_edit_white_24dp" id="knn-3z-QH2">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="clickWriteBarButton:" destination="0uM-2S-T2H" id="DZk-qe-NsY"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

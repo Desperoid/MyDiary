@@ -105,7 +105,7 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
 #pragma mark - Target Function
 - (IBAction)clickSettingButton:(UIButton *)sender
 {
-    [self openSetting];
+    [self openSetting:sender];
 }
 
 #pragma mark - Notification
@@ -156,16 +156,17 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
-                [self openEmergencyContacts];
+                [self openEmergencyContacts:cell];
                 break;
             case 1:
-                [self openDiary];
+                [self openDiary:cell];
                 break;
             case 2:
-                [self openProhibition];
+                [self openProhibition:cell];
                 break;
             default:
                 break;
@@ -227,7 +228,7 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
 /**
  跳转到紧急联系人页面
  */
-- (void)openEmergencyContacts
+- (void)openEmergencyContacts:(id)sender
 {
     [self performSegueWithIdentifier:@"presentEmergencyConatacts" sender:nil];
 }
@@ -236,7 +237,7 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
 /**
  跳转到日记页面
  */
-- (void)openDiary
+- (void)openDiary:(id)sender
 {
     [self performSegueWithIdentifier:@"presentDiary" sender:nil];
 }
@@ -245,16 +246,16 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
 /**
  跳转到禁止事项
  */
-- (void)openProhibition
+- (void)openProhibition:(id)sender
 {
-    [self performSegueWithIdentifier:@"presentMemo" sender:nil];
+    [self performSegueWithIdentifier:@"presentMemo" sender:sender];
 }
 
 
 /**
  跳转到设置界面
  */
-- (void)openSetting
+- (void)openSetting:(id)sender
 {
     
 }
