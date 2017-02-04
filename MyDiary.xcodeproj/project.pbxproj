@@ -13,6 +13,7 @@
 		D05B27461E233D7100D9606E /* MDContactsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D05B27441E233D7100D9606E /* MDContactsTableViewCell.m */; };
 		D05B27471E233D7100D9606E /* MDContactsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05B27451E233D7100D9606E /* MDContactsTableViewCell.xib */; };
 		D06A98051E2E2CD000BFCBE3 /* MDMemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D06A98041E2E2CD000BFCBE3 /* MDMemoViewController.m */; };
+		D06BA6AD1E45E200000A981D /* MDMemoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D06BA6AC1E45E200000A981D /* MDMemoManager.m */; };
 		D07203F31E3086E800762208 /* MDMemoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07203F11E3086E800762208 /* MDMemoTableViewCell.m */; };
 		D07203F41E3086E800762208 /* MDMemoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07203F21E3086E800762208 /* MDMemoTableViewCell.xib */; };
 		D07D0E361E25F65C00B7238E /* MDDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D0E351E25F65C00B7238E /* MDDiaryViewController.m */; };
@@ -55,6 +56,8 @@
 		D05B27451E233D7100D9606E /* MDContactsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDContactsTableViewCell.xib; sourceTree = "<group>"; };
 		D06A98031E2E2CD000BFCBE3 /* MDMemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMemoViewController.h; sourceTree = "<group>"; };
 		D06A98041E2E2CD000BFCBE3 /* MDMemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMemoViewController.m; sourceTree = "<group>"; };
+		D06BA6AB1E45E200000A981D /* MDMemoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMemoManager.h; sourceTree = "<group>"; };
+		D06BA6AC1E45E200000A981D /* MDMemoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMemoManager.m; sourceTree = "<group>"; };
 		D07203F01E3086E800762208 /* MDMemoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMemoTableViewCell.h; sourceTree = "<group>"; };
 		D07203F11E3086E800762208 /* MDMemoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMemoTableViewCell.m; sourceTree = "<group>"; };
 		D07203F21E3086E800762208 /* MDMemoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDMemoTableViewCell.xib; sourceTree = "<group>"; };
@@ -264,6 +267,8 @@
 				D0DDE4331E267EE600E3BEF9 /* MDDiaryManager.m */,
 				D082B1351E2EFFD200C6DA9F /* MDDiaryThemeManager.h */,
 				D082B1361E2EFFD200C6DA9F /* MDDiaryThemeManager.m */,
+				D06BA6AB1E45E200000A981D /* MDMemoManager.h */,
+				D06BA6AC1E45E200000A981D /* MDMemoManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -523,6 +528,7 @@
 				D0DDE42D1E266DCD00E3BEF9 /* MDEntriesListView.m in Sources */,
 				D082B1371E2EFFD200C6DA9F /* MDDiaryThemeManager.m in Sources */,
 				D0A6577C1E1E2D2800A40CB5 /* main.m in Sources */,
+				D06BA6AD1E45E200000A981D /* MDMemoManager.m in Sources */,
 				D07203F31E3086E800762208 /* MDMemoTableViewCell.m in Sources */,
 				D05B27401E23270B00D9606E /* TableViewIndexView.m in Sources */,
 				D0A31A801E22260A0080CEF5 /* MDHomeTableViewCell.m in Sources */,

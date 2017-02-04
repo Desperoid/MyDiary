@@ -8,7 +8,7 @@
 
 #import "MDBaseViewController.h"
 
-@interface MDBaseViewController ()
+@interface MDBaseViewController ()<UIGestureRecognizerDelegate>
 
 @end
 
@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,5 +33,13 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer == self.navigationController.interactivePopGestureRecognizer &&
+        [self.navigationController.viewControllers count] <= 1) {
+        return NO;
+    }
+    return YES;
+}
 
 @end

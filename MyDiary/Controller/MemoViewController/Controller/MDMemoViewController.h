@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MDMemoViewController : UIViewController
-@property (nonatomic, copy) NSDictionary<NSString*, NSNumber*> *allMemos; //@{"do something":@(YES)}
+@property (nonatomic, copy) NSArray<NSDictionary<NSString*,NSNumber*>*> *allMemoEntries; //@[@{"do something":@(YES)}, @{"do another thing":@(NO)}]
 @end

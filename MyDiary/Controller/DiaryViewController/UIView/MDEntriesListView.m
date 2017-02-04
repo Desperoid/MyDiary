@@ -134,7 +134,7 @@ static CGFloat kTableViewCellGap = 20.0f;
                 NSArray *weekDaySymbols = [dateformatter shortWeekdaySymbols];
                 entiresCell.dayLabel.text = [NSString stringWithFormat:@"%zd",components.day];
                 entiresCell.timeLabel.text = [NSString stringWithFormat:@"%zd:%zd",components.hour,components.minute];
-                entiresCell.weekdayLabel.text = weekDaySymbols[components.weekday];
+                entiresCell.weekdayLabel.text = weekDaySymbols[components.weekday-1];
             }
         }
     }
@@ -181,7 +181,7 @@ static CGFloat kTableViewCellGap = 20.0f;
 
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"确认删除此条记录" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             [tableView setEditing:NO animated:YES];
@@ -194,6 +194,7 @@ static CGFloat kTableViewCellGap = 20.0f;
         [alert addAction:confirm];
         [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
     }];
+    deleteAction.backgroundColor = [UIColor clearColor];
     return @[deleteAction];
 }
 

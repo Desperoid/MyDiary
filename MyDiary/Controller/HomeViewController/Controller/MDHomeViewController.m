@@ -217,9 +217,9 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
     if ([segue.identifier isEqualToString:@"presentMemo"]) {
         MDMemoViewController *destController = (MDMemoViewController *)[segue destinationViewController];
         destController.title = title;
-        destController.allMemos = @{@"胡萝卜":@(YES),
-                                    @"茄子":@(NO),
-                                    @"黄瓜":@(YES)};
+        destController.allMemoEntries = @[@{@"胡萝卜":@(YES)},
+                                          @{@"茄子":@(NO)},
+                                          @{@"黄瓜":@(YES)}];
     }
 }
 
