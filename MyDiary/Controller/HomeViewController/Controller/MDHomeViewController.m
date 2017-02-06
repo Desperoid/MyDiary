@@ -13,20 +13,30 @@
 #import "MDDiaryViewController.h"
 #import "UIImage+MDProtrait.h"
 #import "MDMemoViewController.h"
+#import "MDMemoManager.h"
 
 static NSString * const kEmergencyContacts = @"紧急联系人";
 static NSString * const kDiary             = @"日记";
 static NSString * const kprohibition       = @"禁止事项";
 
+@interface MDHomeTableListItem : NSObject
+@property (nonatomic, copy) NSString *listItemName;
+@property (nonatomic, assign) NSInteger listItemCount;
+@end
+
+@implementation MDHomeTableListItem
+@end
+
 @interface MDHomeViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *homeTableView;
-@property (nonatomic, strong) NSMutableDictionary *listItemsDic;  //tableView表单选项
+@property (nonatomic, strong) NSMutableArray<MDHomeTableListItem*> *listItemsArray;  //tableView表单选项
 @property (weak, nonatomic) IBOutlet UIButton *settingButton;     //设置按钮
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;  //搜索textfield
 @property (weak, nonatomic) IBOutlet UIImageView *userIconImageView; //头像
 @property (weak, nonatomic) IBOutlet UILabel *userShortNameLabel;    //名字
 @property (weak, nonatomic) IBOutlet UILabel *userFullNameLabel;     //全名
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *footerViewLayoutBottom;  //搜索栏下方与self.view下方的垂直距离
+@property (nonatomic, strong) NSArray<MDMemo*> *memosArray;  //备忘录
 
 @end
 
@@ -69,11 +79,26 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
  */
 - (void)initData
 {
-    self.listItemsDic = [NSMutableDictionary dictionaryWithDictionary:@{kEmergencyContacts:@(0),
-                                                                        kDiary:@(0),
-                                                                        kprohibition:@(0)}];
-    NSInteger contactsCount = [[[MDEmergencyContactsManager shareInstance] getAllContacts] count];
-    [self.listItemsDic setObject:@(contactsCount) forKey:kEmergencyContacts];
+    self.listItemsArray = [NSMutableArray array];
+    
+    MDHomeTableListItem *contacts = [[MDHomeTableListItem alloc] init];
+    contacts.listItemName = kEmergencyContacts;
+    contacts.listItemCount = [[[MDEmergencyContactsManager shareInstance] getAllContacts] count];
+    [self.listItemsArray addObject:contacts];
+    
+    MDHomeTableListItem *diary = [[MDHomeTableListItem alloc] init];
+    diary.listItemName = kDiary;
+    diary.listItemCount = 0;
+    [self.listItemsArray addObject:diary];
+    
+    self.memosArray = [[MDMemoManager shareInstance] getAllMemo];
+    for (int i = 0; i<[self.memosArray count]; i++ ) {
+        MDMemo *memo = self.memosArray[i];
+        MDHomeTableListItem *memoItem = [[MDHomeTableListItem alloc] init];
+        memoItem.listItemName = memo.memoName;
+        memoItem.listItemCount = [memo.memoEntries count];
+        [self.listItemsArray addObject:memoItem];
+    }
 }
 
 /**
@@ -140,7 +165,7 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.listItemsDic.allKeys count];
+    return [self.listItemsArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -178,10 +203,9 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
 {
     if ([cell isKindOfClass:[MDHomeTableViewCell class]]) {
         MDHomeTableViewCell *homeCell = (MDHomeTableViewCell *)cell;
-        NSArray *allKeys = [self.listItemsDic allKeys];
-        if (indexPath.row < [allKeys count]) {
-            NSString *title = allKeys[indexPath.row];
-            NSInteger count = [self.listItemsDic[title] integerValue];
+        if (indexPath.row < [self.listItemsArray count]) {
+            NSString *title = self.listItemsArray[indexPath.row].listItemName;
+            NSInteger count = self.listItemsArray[indexPath.row].listItemCount;
             homeCell.titleLabel.text = title;
             homeCell.countLabel.text = [NSString stringWithFormat:@"%zd",count];
             if ([title isEqualToString:kEmergencyContacts]) {
@@ -190,7 +214,7 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
             else if ([title isEqualToString:kDiary]) {
                 homeCell.headIcon.image = [UIImage imageNamed:@"ic_topic_diary"];
             }
-            else if ([title isEqualToString:kprohibition]) {
+            else {
                 homeCell.headIcon.image = [UIImage imageNamed:@"ic_topic_memo"];
             }
         }
@@ -214,12 +238,12 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
 {
     MDHomeTableViewCell *cell = (MDHomeTableViewCell *)sender;
     NSString *title = cell.titleLabel.text;
+    NSInteger index = [self.homeTableView indexPathForCell:cell].row - 2;
     if ([segue.identifier isEqualToString:@"presentMemo"]) {
         MDMemoViewController *destController = (MDMemoViewController *)[segue destinationViewController];
         destController.title = title;
-        destController.allMemoEntries = @[@{@"胡萝卜":@(YES)},
-                                          @{@"茄子":@(NO)},
-                                          @{@"黄瓜":@(YES)}];
+        MDMemo *memo =  [[MDMemoManager shareInstance] getAllMemo][index];
+        destController.memo = memo;
     }
 }
 

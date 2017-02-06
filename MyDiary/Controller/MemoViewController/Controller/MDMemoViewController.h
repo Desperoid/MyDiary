@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MDMemoManager.h"
 
 @interface MDMemoViewController : UIViewController
-@property (nonatomic, copy) NSArray<NSDictionary<NSString*,NSNumber*>*> *allMemoEntries; //@[@{"do something":@(YES)}, @{"do another thing":@(NO)}]
+@property (nonatomic, strong) MDMemo *memo;
 @end

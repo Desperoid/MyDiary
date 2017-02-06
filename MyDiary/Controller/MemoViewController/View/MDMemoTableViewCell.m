@@ -45,6 +45,7 @@
 {
     [super prepareForReuse];
     self.contentTextfield.userInteractionEnabled = NO;
+    self.contentTextfield.text = nil;
     self.callback = nil;
     self.haveFinished = NO;
 }
@@ -63,8 +64,8 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    
-    self.MemoText = textField.text;
+    NSString *memoText = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    self.MemoText = memoText;
     [self changeMemoLabelText];
     if (self.callback) {
         self.callback(self.MemoText);
@@ -72,7 +73,21 @@
     self.contentTextfield.userInteractionEnabled = NO;
     self.callback = nil;
 }
-
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (!textField.text || [textField.text length] == 0) {
+        if ([NSCharacterSet characterSetWithCharactersInString:string] == [NSCharacterSet whitespaceAndNewlineCharacterSet]) {
+            return NO;
+        }
+    }
+    if (range.location == textField.text.length-1) {
+        if ([NSCharacterSet characterSetWithCharactersInString:string] == [NSCharacterSet whitespaceAndNewlineCharacterSet]) {
+            return NO;
+            
+        }
+    }
+    return YES;
+}
 #pragma mark - public function
 - (void)editMemoCompletion:(MemoTableViewCellCallBack)callback
 {
@@ -84,7 +99,7 @@
 #pragma mark - private function
 - (void)changeMemoLabelText
 {
-    if (!self.MemoText || [self.MemoText length] == 0) {
+    if (!self.MemoText) {
         return;
     }
     NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:self.MemoText];

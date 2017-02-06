@@ -14,11 +14,19 @@
 @property (weak, nonatomic) IBOutlet UITableView *memoTableView;
 @property (nonatomic, assign) BOOL isEditMemo;  //正在编辑备忘录
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
+@property (nonatomic, copy) NSArray<MDMemoEntry*> *entriesInTable; //显示在table列表中的entry
 @end
 
 static NSString *const kMemoTableViewCellIdentifier = @"MemoTableViewCellIdentifier";
 static NSString *const kMemoTableViewCellName = @"MDMemoTableViewCell";
 @implementation MDMemoViewController
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    //离开页面时保存修改
+    [[MDMemoManager shareInstance] modifyMemo:self.memo withMemoEntries:self.entriesInTable];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,6 +37,7 @@ static NSString *const kMemoTableViewCellName = @"MDMemoTableViewCell";
 
 - (void)initData
 {
+    self.entriesInTable = self.memo.memoEntries;
 }
 
 - (void)initView
@@ -63,14 +72,17 @@ static NSString *const kMemoTableViewCellName = @"MDMemoTableViewCell";
 - (IBAction)clickWriteBarButton:(UIBarButtonItem *)sender
 {
     [self resignKeyboard];
-    [self.memoTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[self.allMemoEntries count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+    if ([self.entriesInTable count]>0) {
+         [self.memoTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[self.entriesInTable count]-1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+    }
+   
     [self addOneMemoEntry];
 }
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.allMemoEntries count];
+    return [self.entriesInTable count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -87,17 +99,11 @@ static NSString *const kMemoTableViewCellName = @"MDMemoTableViewCell";
         MDMemoTableViewCell *memoCell = (MDMemoTableViewCell *)cell;
         memoCell.memoTextColor = [[MDDiaryThemeManager shareInstance] themeMainColor];
         NSInteger index = indexPath.row;
-        if (index < [self.allMemoEntries count]) {
-            NSDictionary *memoEntry = self.allMemoEntries[index];
-            NSString *memoString = [memoEntry.allKeys firstObject];
-            NSNumber *finished = [memoEntry.allValues firstObject];
+        if (index < [self.entriesInTable count]) {
+            MDMemoEntry *memoEntry = self.entriesInTable[index];
+            NSString *memoString = memoEntry.entryName;
             memoCell.MemoText = memoString;
-            if ([finished boolValue]) {
-                memoCell.haveFinished = YES;
-            }
-            else {
-                memoCell.haveFinished = NO;
-            }
+            memoCell.haveFinished = memoEntry.finished;
             if ([memoString length] == 0) {
                 [self startEditMemoEntry:memoCell inTableIndexPath:indexPath];
             }
@@ -109,9 +115,11 @@ static NSString *const kMemoTableViewCellName = @"MDMemoTableViewCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    MDMemoEntry *entry = self.entriesInTable[indexPath.row];
+    entry.finished = !entry.finished;
     if ([cell isKindOfClass:[MDMemoTableViewCell class]]) {
         MDMemoTableViewCell *memoCell = (MDMemoTableViewCell *)cell;
-        memoCell.haveFinished = !memoCell.haveFinished;
+        memoCell.haveFinished = entry.finished;
     }
 }
 
@@ -128,12 +136,11 @@ static NSString *const kMemoTableViewCellName = @"MDMemoTableViewCell";
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     //删除
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+         [tableView setEditing:NO animated:YES];
         UIAlertController *alertConroller = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定要删除此条记录" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            [tableView setEditing:NO animated:YES];
         }];
         UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            [tableView setEditing:NO animated:YES];
             //todo:删除该条记录
             if ([cell isKindOfClass:[MDMemoTableViewCell class]]) {
                 MDMemoTableViewCell *memoCell = (MDMemoTableViewCell*)cell;
@@ -182,16 +189,13 @@ static NSString *const kMemoTableViewCellName = @"MDMemoTableViewCell";
  */
 - (void)addOneMemoEntry
 {
-    NSDictionary *newEntry = @{@"":@(NO)};
-    NSMutableArray *mutaArray = [NSMutableArray arrayWithArray:self.allMemoEntries];
-    [mutaArray addObject:newEntry];
-    self.allMemoEntries = mutaArray;
-    [self.memoTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.allMemoEntries count]-1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-}
-
-- (void)modifyMemo
-{
-    
+    MDMemoEntry *entry = [[MDMemoEntry alloc] init];
+    entry.entryName = @"";
+    entry.finished = NO;
+    NSMutableArray *mutaArray = [NSMutableArray arrayWithArray:self.entriesInTable];
+    [mutaArray addObject:entry];
+    self.entriesInTable = mutaArray;
+    [self.memoTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.entriesInTable count]-1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 
@@ -201,20 +205,22 @@ static NSString *const kMemoTableViewCellName = @"MDMemoTableViewCell";
 - (void)startEditMemoEntry:(MDMemoTableViewCell*)memoCell inTableIndexPath:(NSIndexPath*)indexPath
 {
     [self.memoTableView setEditing:NO animated:YES];
-    [self.memoTableView setScrollEnabled:NO];
+    [self.memoTableView setUserInteractionEnabled:NO];
     self.isEditMemo = YES;
     self.tap.enabled = YES;
     memoCell.haveFinished = NO;
+    MDMemoEntry *entry = self.entriesInTable[indexPath.row];
     //编辑结局的回调
     [memoCell editMemoCompletion:^(NSString *memoText) {
         self.tap.enabled = NO;
         self.isEditMemo = NO;
-        [self.memoTableView setScrollEnabled:YES];
+        [self.memoTableView setUserInteractionEnabled:YES];
         if ([memoText length] > 0) {
-            NSDictionary *editedEntry = @{memoText:@(NO)};
-            NSMutableArray *mutaArray = [NSMutableArray arrayWithArray:self.allMemoEntries];
-            [mutaArray replaceObjectAtIndex:indexPath.row withObject:editedEntry];
-            self.allMemoEntries = mutaArray;
+            entry.entryName = memoText;
+            entry.finished = NO;
+            NSMutableArray *mutaArray = [NSMutableArray arrayWithArray:self.entriesInTable];
+            [mutaArray replaceObjectAtIndex:indexPath.row withObject:entry];
+            self.entriesInTable = mutaArray;
         }
         //修改后为空白文字
         else {
@@ -232,10 +238,10 @@ static NSString *const kMemoTableViewCellName = @"MDMemoTableViewCell";
  */
 - (void)deleteMemoEntry:(MDMemoTableViewCell*)momeCell inTableIndexPath:(NSIndexPath*)indexPath
 {
-    NSMutableArray *mutaArray = [NSMutableArray arrayWithArray:self.allMemoEntries];
+    NSMutableArray *mutaArray = [NSMutableArray arrayWithArray:self.entriesInTable];
     [mutaArray removeObjectAtIndex:indexPath.row];
-    self.allMemoEntries = mutaArray;
-    [self.memoTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    self.entriesInTable = mutaArray;
+    [self.memoTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end
