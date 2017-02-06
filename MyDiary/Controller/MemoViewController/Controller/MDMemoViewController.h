@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MDBaseViewController.h"
 #import "MDMemoManager.h"
 
-@interface MDMemoViewController : UIViewController
+@interface MDMemoViewController :MDBaseViewController
 @property (nonatomic, strong) MDMemo *memo;
 @end

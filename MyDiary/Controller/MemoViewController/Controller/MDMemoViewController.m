@@ -25,6 +25,7 @@ static NSString *const kMemoTableViewCellName = @"MDMemoTableViewCell";
 {
     [super viewWillDisappear:animated];
     //离开页面时保存修改
+    [self resignKeyboard];
     [[MDMemoManager shareInstance] modifyMemo:self.memo withMemoEntries:self.entriesInTable];
 }
 
@@ -173,14 +174,6 @@ static NSString *const kMemoTableViewCellName = @"MDMemoTableViewCell";
 - (void)popSelf
 {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-/**
- 注销键盘
- */
-- (void)resignKeyboard
-{
-    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
 }
 
 

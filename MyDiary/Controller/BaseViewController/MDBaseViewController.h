@@ -10,5 +10,8 @@
 #import <UIKit/UIKit.h>
 
 @interface MDBaseViewController : UIViewController
-
+/**
+ 注销键盘
+ */
+- (void)resignKeyboard;
 @end

@@ -42,4 +42,9 @@
     return YES;
 }
 
+- (void)resignKeyboard
+{
+    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+}
+
 @end
