@@ -10,8 +10,8 @@
 
 @interface TableViewIndexView ()
 @property (nonatomic, strong) NSArray<UILabel*> *indexLabels;   //索引label
-@property (nonatomic, strong) UITapGestureRecognizer *tapGesture; //触摸手势
 @property (nonatomic, strong) UISelectionFeedbackGenerator *selectionFeedback; //选择震动
+@property (nonatomic, assign) NSInteger selectedIndex;//选中的index;
 @end
 
 @implementation TableViewIndexView
@@ -38,9 +38,7 @@
     self.textColor  = [UIColor blackColor];
     self.indexTextFont = [UIFont systemFontOfSize:12];
     self.textAlignment = NSTextAlignmentCenter;
-    self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnIndexView:)];
     self.selectionFeedback = [[UISelectionFeedbackGenerator alloc] init];
-    [self addGestureRecognizer:self.tapGesture];
 }
 
 #pragma mark - Overrride
@@ -65,15 +63,39 @@
     }
 }
 
-#pragma mark - Target Action
-- (void)tapOnIndexView:(UITapGestureRecognizer *)tapGeture
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    CGPoint tapLocation = [tapGeture locationInView:tapGeture.view];
-    UILabel *tapedLabel = (UILabel*)[self hitTest:tapLocation withEvent:nil];
-    NSUInteger index = [self.indexLabels indexOfObject:tapedLabel];
+    UITouch *touch = touches.anyObject;
+    UILabel *touchedLabel = (UILabel*)[self hitTest:[touch locationInView:self] withEvent:event];
+    NSUInteger index = [self.indexLabels indexOfObject:touchedLabel];
     if (index != NSNotFound && self.touchCallBack) {
-        [self.selectionFeedback selectionChanged];
-        self.touchCallBack(index);
+        if (index!=self.selectedIndex) {
+            self.selectedIndex = index;
+            [self.selectionFeedback selectionChanged];
+            self.touchCallBack(index);
+        }
+    }
+    else {
+        [super touchesBegan:touches withEvent:event];
+    }
+    
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = touches.anyObject;
+    UILabel *touchedLabel = (UILabel*)[self hitTest:[touch locationInView:self] withEvent:event];
+    NSUInteger index = [self.indexLabels indexOfObject:touchedLabel];
+    if (index != NSNotFound && self.touchCallBack) {
+        if (index!=self.selectedIndex) {
+            self.selectedIndex = index;
+            [self.selectionFeedback selectionChanged];
+            self.touchCallBack(index);
+        };
+        
+    }
+    else {
+        [super touchesMoved:touches withEvent:event];
     }
 }
 
