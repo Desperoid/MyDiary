@@ -37,11 +37,11 @@
 #pragma mark - setter and getter
 - (UIColor *)themeTextColor
 {
-    return [UIColor whiteColor];
+    return _themeTextColor;
 }
 
 - (UIColor *)themeMainColor
 {
-    return [UIColor colorWithRed:230/255.0 green:141/255.0 blue:133/255.0 alpha:1];
+    return _themeMainColor;
 }
 @end

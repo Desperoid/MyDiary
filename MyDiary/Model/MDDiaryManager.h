@@ -15,4 +15,10 @@
 
 - (NSArray<MDDiary*>*)getAllDiaries;
 
+- (NSArray<MDDiary*>*)getDiariesFromDate:(NSDate*)startDate toDate:(NSDate*)endDate;
+
+- (BOOL)saveNewDary:(MDDiary*)NewDiay;
+
+- (BOOL)modifyDary:(MDDiary*)NewDiay;
+
 @end

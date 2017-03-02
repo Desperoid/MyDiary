@@ -10,7 +10,8 @@
 
 @interface MDEmergencyContact : NSObject
 
-@property (nonatomic, copy)  NSString *contactName;
-@property (nonatomic, copy)  NSString *phoneNumber;
+@property (nonatomic, assign) NSInteger contactId;
+@property (nonatomic, copy)   NSString *contactName;
+@property (nonatomic, copy)   NSString *phoneNumber;
 
 @end

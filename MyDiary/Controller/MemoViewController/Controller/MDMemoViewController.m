@@ -25,7 +25,6 @@ static NSString *const kMemoTableViewCellName = @"MDMemoTableViewCell";
 {
     [super viewWillDisappear:animated];
     //离开页面时保存修改
-    [self resignKeyboard];
     [[MDMemoManager shareInstance] modifyMemo:self.memo withMemoEntries:self.entriesInTable];
 }
 

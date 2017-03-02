@@ -306,6 +306,12 @@ static CGFloat kSectionFooterHeight = 1;
     return YES;
 }
 
+#pragma mark - UIScrollViewDelegate
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self resignKeyboard];
+}
+
 #pragma mark - privateFunction
 
 - (MDEmergencyContact *)getContactWithIndexPath:(NSIndexPath*)indexPath

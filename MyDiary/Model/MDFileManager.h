@@ -22,9 +22,33 @@
 
 extern NSString * const kMemoKey;
 /**
- 获取用户备忘录文件路径
+ 获取备忘录文件路径
 
- @return 用户备忘录文件路径
+ @return 备忘录文件路径
  */
 - (NSString*)getUserMemoFilePath;
+
+
+/**
+ 获取联系人文件路径
+
+ @return 联系人文件路径
+ */
+- (NSString*)getUserContactorFilePath;
+
+
+/**
+ 获取日记文件路径
+
+ @return 日记文件路径
+ */
+- (NSString*)getUserDiaryFilePath;
+
+
+/**
+ 获取数据库保存地址
+
+ @return 数据库保存地址
+ */
+- (NSString*)getUserDBFilePath;
 @end

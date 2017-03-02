@@ -233,6 +233,12 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
     
 }
 
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self resignKeyboard];
+}
+
 #pragma mark - segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

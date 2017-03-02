@@ -50,4 +50,19 @@
     return self.allContacts;
 }
 
+- (BOOL)saveNewContact:(MDEmergencyContact *)contact
+{
+    
+}
+
+- (BOOL)deleteContact:(MDEmergencyContact *)contact
+{
+    
+}
+
+- (BOOL)modifyContact:(MDEmergencyContact *)contact
+{
+    
+}
+
 @end

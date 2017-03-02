@@ -60,4 +60,20 @@
 {
     return self.allDiaries;
 }
+
+-(NSArray<MDDiary *> *)getDiariesFromDate:(NSDate *)startDate toDate:(NSDate *)endDate
+{
+    return  nil;
+}
+
+- (BOOL)saveNewDary:(MDDiary*)NewDiay
+{
+    return YES;
+}
+
+- (BOOL)modifyDary:(MDDiary*)NewDiay
+{
+    return YES;
+}
+
 @end

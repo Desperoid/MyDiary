@@ -15,4 +15,10 @@
 
 - (NSArray<MDEmergencyContact*>*)getAllContacts;
 
+- (BOOL)saveNewContact:(MDEmergencyContact*)contact;
+
+- (BOOL)deleteContact:(MDEmergencyContact*)contact;
+
+- (BOOL)modifyContact:(MDEmergencyContact *)contact;
+
 @end
