@@ -130,6 +130,23 @@ static CGFloat kSectionFooterHeight = 1;
 {
     NSLog(@"%@",sender.text);
 }
+- (IBAction)addContactButtonDidClicked:(UIBarButtonItem *)sender
+{
+    //显示action sheet
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    UIAlertAction *addContactFromLocalContacts = [UIAlertAction actionWithTitle:@"从手机联系人中添加" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self performSegueWithIdentifier:@"showLocalContacts" sender:sender];
+    }];
+    UIAlertAction *newContact = [UIAlertAction actionWithTitle:@"创建联系人" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [actionSheet addAction:cancel];
+    [actionSheet addAction:addContactFromLocalContacts];
+    [actionSheet addAction:newContact];
+    [self presentViewController:actionSheet animated:YES completion:nil];
+}
 
 #pragma mark - Notification
 - (void)recieveKeyboardShowNotification:(NSNotification *)notification

@@ -58,14 +58,14 @@ NSString *const kMemoKey = @"Memo";
 - (NSString*)getUserContactorFilePath
 {
     NSString *mainPath = [self getUserFilePath];
-    NSString *filePath = [mainPath stringByAppendingString:@"contact.plist"];
+    NSString *filePath = [mainPath stringByAppendingPathComponent:@"contact.plist"];
     return filePath;
 }
 
 - (NSString *)getUserDBFilePath
 {
     NSString *mainPath = [self getUserFilePath];
-    NSString *filePath = [mainPath stringByAppendingString:@"MyDiaray.db"];
+    NSString *filePath = [mainPath stringByAppendingPathComponent:@"MyDiaray.db"];
     return filePath;
 }
 @end

@@ -13,7 +13,6 @@
 #import "MDDiary.h"
 
 @interface MDDBManager ()
-@property (nonatomic, strong) FMDatabase *db;
 @property (nonatomic, strong) FMDatabaseQueue *queue;
 @end
 
@@ -36,7 +35,7 @@
 - (instancetype)initPrivate
 {
     if (self = [super init]) {
-       
+        [self createTable];
     }
     return self;
 }
@@ -54,18 +53,9 @@
     }];
 }
 
-- (FMDatabase *)db
-{
-    if (!_db) {
-        NSString *dbFilePath = [[MDFileManager shareInstance] getUserDBFilePath];
-        _db = [FMDatabase databaseWithPath:dbFilePath];
-    }
-    return _db;
-}
-
 - (FMDatabaseQueue *)queue
 {
-    if (_queue) {
+    if (!_queue) {
         NSString *dbFilePath = [[MDFileManager shareInstance] getUserDBFilePath];
         _queue = [FMDatabaseQueue databaseQueueWithPath:dbFilePath];
     }
@@ -117,6 +107,17 @@
     [self.queue inDatabase:^(FMDatabase *db) {
         if ([db open]) {
             [db executeUpdate:@"DELETE FROM contacts WHERE id = ?" values:@[@(contact.contactId)] error:&error];
+        }
+        [db close];
+    }];
+}
+
+- (void)modifyContact:(MDEmergencyContact*)contact
+{
+    __block NSError *error;
+    [self.queue inDatabase:^(FMDatabase *db) {
+        if ([db open]) {
+            [db executeUpdate:@"UPDATE contacts SET name=?,phoneNum=? WHERE id=?" values:@[contact.contactName, contact.phoneNumber, @(contact.contactId)] error:&error];
         }
         [db close];
     }];

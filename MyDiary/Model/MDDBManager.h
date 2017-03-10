@@ -19,6 +19,8 @@
 - (NSArray<MDEmergencyContact*>*)getAllContacts;
 
 - (void)deleteContact:(MDEmergencyContact*)contact;
+
+- (void)modifyContact:(MDEmergencyContact*)contact;
 @end
 
 @interface MDDBManager (MDDiaryManager)
