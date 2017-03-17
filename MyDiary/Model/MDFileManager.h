@@ -30,14 +30,6 @@ extern NSString * const kMemoKey;
 
 
 /**
- 获取联系人文件路径
-
- @return 联系人文件路径
- */
-- (NSString*)getUserContactorFilePath;
-
-
-/**
  获取日记文件路径
 
  @return 日记文件路径

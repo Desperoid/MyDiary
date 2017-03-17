@@ -8,8 +8,10 @@
 
 #import "MDEmergencyContactsManager.h"
 #import "MDDBManager.h"
+#import "WeakObject.h"
 
 @interface MDEmergencyContactsManager ()
+@property (nonatomic, strong) NSMutableArray<WeakObject*> *listeners;
 @property (nonatomic, strong) NSMutableArray *allContacts;
 @property (nonatomic, strong) dispatch_queue_t queue;
 @end
@@ -34,6 +36,7 @@
 - (instancetype)initPrivate
 {
     if (self = [super init]) {
+        self.listeners = [NSMutableArray array];
 //        _allContacts = [NSMutableArray array];
 //        MDEmergencyContact *contact = [[MDEmergencyContact alloc] init];
 //        contact.contactName = @"TAKI";
@@ -51,29 +54,86 @@
 }
 
 #pragma mark - public function
-- (NSArray<MDEmergencyContact *> *)getAllContacts
+
+- (void)addListener:(id<MDEmergencyContactsListener>)listener
 {
-    return self.allContacts;
+   
+    WeakObject *wo = [[WeakObject alloc] init];
+    wo.insideObject = listener;
+    @synchronized (self) {
+        [self.listeners addObject:wo];
+    }
+}
+
+- (void)removeListener:(id<MDEmergencyContactsListener>)listener
+{
+    WeakObject *wo = [[WeakObject alloc] init];
+    wo.insideObject = listener;
+    @synchronized (self) {
+        [self.listeners removeObject:wo];
+    }
+}
+-(void)getAllContactsFromDB:(void (^)(NSArray<MDEmergencyContact *> *))completeBlock
+{
+    dispatch_async(self.queue, ^{
+        self.allContacts = [[[MDDBManager shareInstance] getAllContacts] mutableCopy];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completeBlock) {
+                completeBlock(self.allContacts);
+            }
+        });
+    });
+}
+
+- (void)getContactsCount:(void(^)(NSInteger count))completeBlock
+{
+    dispatch_async(self.queue, ^{
+        self.allContacts = [[[MDDBManager shareInstance] getAllContacts] mutableCopy];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completeBlock) {
+                completeBlock([self.allContacts count]);
+            }
+        });
+    });
 }
 
 - (void)saveNewContact:(MDEmergencyContact *)contact
 {
     dispatch_async(self.queue, ^{
-         [[MDDBManager shareInstance] saveNewContact:contact];
+        if (!contact.contactName || !contact.phoneNumber) {
+            [self listenerResponseSelector:@selector(contactDidAdded:success:) contact:contact success:NO];
+            return ;
+        }
+        BOOL success = [[MDDBManager shareInstance] saveNewContact:contact];
+        [self listenerResponseSelector:@selector(contactDidAdded:success:) contact:contact success:success];
     });
 }
 
 - (void)deleteContact:(MDEmergencyContact *)contact
 {
     dispatch_async(self.queue, ^{
-        [[MDDBManager shareInstance] deleteContact:contact];
+        BOOL success = [[MDDBManager shareInstance] deleteContact:contact];
+        [self listenerResponseSelector:@selector(contactDidDelete:success:) contact:contact success:success];
     });
 }
 
 - (void)modifyContact:(MDEmergencyContact *)contact
 {
     dispatch_async(self.queue, ^{
-        [[MDDBManager shareInstance] modifyContact:contact];
+        BOOL success = [[MDDBManager shareInstance] modifyContact:contact];
+        [self listenerResponseSelector:@selector(contactDidModified:success:) contact:contact success:success];
+    });
+}
+
+- (void)readContactsCount:(void(^)(NSInteger count))completeBlock
+{
+    dispatch_async(self.queue, ^{
+        NSInteger count = [[MDDBManager shareInstance] getContactsCount];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completeBlock) {
+                completeBlock(count);
+            }
+        });
     });
 }
 
@@ -83,6 +143,27 @@
 {
     dispatch_async(self.queue, ^{
         self.allContacts = [[[MDDBManager shareInstance] getAllContacts] mutableCopy];
+    });
+}
+
+- (void)listenerResponseSelector:(SEL)selector contact:(MDEmergencyContact*)contact success:(BOOL)success
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @synchronized (self) {
+            for (WeakObject* wo in self.listeners) {
+                id<MDEmergencyContactsListener> listener = wo.insideObject;
+                if (listener && [listener respondsToSelector:selector]) {
+                    MDEmergencyContact *param1 = contact;
+                    BOOL param2 = success;
+                    NSMethodSignature *signature = [[listener class] instanceMethodSignatureForSelector:selector];
+                    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+                    [invocation setArgument:&param1 atIndex:2];
+                    [invocation setArgument:&param2 atIndex:3];
+                    [invocation setSelector:selector];
+                    [invocation invokeWithTarget:listener];
+                }
+            }
+        }
     });
 }
 

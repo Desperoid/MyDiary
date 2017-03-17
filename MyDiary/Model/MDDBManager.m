@@ -81,15 +81,23 @@
     return contacts;
 }
 
-- (void)saveNewContact:(MDEmergencyContact*)contact;
+- (BOOL)saveNewContact:(MDEmergencyContact*)contact;
 {
     __block NSError *error;
+    __block BOOL success = NO;
     [self.queue inDatabase:^(FMDatabase *db) {
         if ([db open]) {
-            [db executeUpdate:@"INSERT INTO contacts (id,name, phoneNum) VALUES (?, ?)" values:@[[NSNull null], contact.contactName, contact.phoneNumber] error:&error];
+          success =  [db executeUpdate:@"INSERT INTO contacts (name, phoneNum) VALUES (?, ?)" values:@[contact.contactName, contact.phoneNumber] error:&error];
+            if(success) {
+               FMResultSet *result = [db executeQuery:@"SELECT last_insert_rowid(), id FROM contacts"];
+                if ([result next]) {
+                    contact.contactId = [result intForColumn:@"id"];
+                }
+            }
         }
         [db close];
     }];
+    return success;
 }
 
 - (MDEmergencyContact*)contactFromDBResutSet:(FMResultSet*)resultSet
@@ -101,28 +109,47 @@
     return contact;
 }
 
-- (void)deleteContact:(MDEmergencyContact *)contact
+- (BOOL)deleteContact:(MDEmergencyContact *)contact
 {
     __block NSError *error;
+    __block BOOL success = NO;
     [self.queue inDatabase:^(FMDatabase *db) {
         if ([db open]) {
-            [db executeUpdate:@"DELETE FROM contacts WHERE id = ?" values:@[@(contact.contactId)] error:&error];
+            success = [db executeUpdate:@"DELETE FROM contacts WHERE id = ?" values:@[@(contact.contactId)] error:&error];
         }
         [db close];
     }];
+    return success;
 }
 
-- (void)modifyContact:(MDEmergencyContact*)contact
+- (BOOL)modifyContact:(MDEmergencyContact*)contact
 {
     __block NSError *error;
+    __block BOOL success = NO;
     [self.queue inDatabase:^(FMDatabase *db) {
         if ([db open]) {
-            [db executeUpdate:@"UPDATE contacts SET name=?,phoneNum=? WHERE id=?" values:@[contact.contactName, contact.phoneNumber, @(contact.contactId)] error:&error];
+            success = [db executeUpdate:@"UPDATE contacts SET name=?,phoneNum=? WHERE id=?" values:@[contact.contactName, contact.phoneNumber, @(contact.contactId)] error:&error];
         }
         [db close];
     }];
+    return success;
 }
 
+
+- (NSInteger)getContactsCount
+{
+    __block NSInteger count = NSNotFound;
+    [self.queue inDatabase:^(FMDatabase *db) {
+        if ([db open]) {
+            FMResultSet *resut = [db executeQuery:@"SELECT count(id) AS count FROM contacts"];
+            if ([resut next]) {
+                count = [resut intForColumn:@"count"];
+            }
+            [db close];
+        }
+    }];
+    return count;
+}
 @end
 
 @implementation MDDBManager (MDDiaryManager)

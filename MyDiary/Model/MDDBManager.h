@@ -14,13 +14,15 @@
 @end
 
 @interface MDDBManager (MDEmergencyContactsManager)
-- (void)saveNewContact:(MDEmergencyContact*)contact;
+- (BOOL)saveNewContact:(MDEmergencyContact*)contact;
 
 - (NSArray<MDEmergencyContact*>*)getAllContacts;
 
-- (void)deleteContact:(MDEmergencyContact*)contact;
+- (BOOL)deleteContact:(MDEmergencyContact*)contact;
 
-- (void)modifyContact:(MDEmergencyContact*)contact;
+- (BOOL)modifyContact:(MDEmergencyContact*)contact;
+
+- (NSInteger)getContactsCount;
 @end
 
 @interface MDDBManager (MDDiaryManager)

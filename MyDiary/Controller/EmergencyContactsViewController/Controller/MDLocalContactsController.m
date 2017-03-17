@@ -8,6 +8,7 @@
 
 #import "MDLocalContactsController.h"
 #import <Contacts/Contacts.h>
+#import "MDEmergencyContactsManager.h"
 
 @interface MDLocalContactsController ()
 @property (nonatomic, strong) CNContactStore *contactStore;
@@ -36,7 +37,7 @@ static NSString * cellIdentifier = @"LocalContactsCellIdentifier";
 
 - (void)initView
 {
-     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    self.title = @"手机联系人";
     self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
@@ -64,6 +65,7 @@ static NSString * cellIdentifier = @"LocalContactsCellIdentifier";
     // Dispose of any resources that can be recreated.
 }
 
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -72,8 +74,10 @@ static NSString * cellIdentifier = @"LocalContactsCellIdentifier";
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    }
     return cell;
 
 }
@@ -88,6 +92,26 @@ static NSString * cellIdentifier = @"LocalContactsCellIdentifier";
         NSArray *phoneLabels = contact.phoneNumbers;
         cell.textLabel.text = fullName;
         cell.imageView.image = [UIImage imageWithData:imageData];
+        //先默认只选第一个电话
+        CNLabeledValue *firstPhone = phoneLabels.firstObject;
+        CNPhoneNumber *cPhone = firstPhone.value;
+        cell.detailTextLabel.text = cPhone.stringValue;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger index = indexPath.row;
+    if (index < [self.contactsArray count]) {
+        CNContact *contact = self.contactsArray[index];
+        MDEmergencyContact *emerContact = [[MDEmergencyContact alloc] init];
+        emerContact.contactName = [CNContactFormatter stringFromContact:contact style:CNContactFormatterStyleFullName];
+        NSArray *phoneLabels = contact.phoneNumbers;
+        CNLabeledValue *firstPhone = phoneLabels.firstObject;
+        CNPhoneNumber *cPhone = firstPhone.value;
+        emerContact.phoneNumber = cPhone.stringValue;
+        [[MDEmergencyContactsManager shareInstance] saveNewContact:emerContact];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 /*

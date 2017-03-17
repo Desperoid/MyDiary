@@ -21,7 +21,7 @@ static CGFloat kCellGap = 20;
 static CGFloat kSectionHeaderHeight = 60;
 static CGFloat kSectionFooterHeight = 1;
 
-@interface MDEmergencyContactsViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface MDEmergencyContactsViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, MDEmergencyContactsListener>
 @property (weak, nonatomic) IBOutlet UITextField *contactSearchTextField;  //联络人搜索textField
 @property (weak, nonatomic) IBOutlet UITableView *contactsTableView;
 @property (weak, nonatomic) IBOutlet TableViewIndexView *tableIndexView;   //索引view
@@ -31,7 +31,9 @@ static CGFloat kSectionFooterHeight = 1;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *layoutToolbarBottom; //toolbar下边约束
 @property (nonatomic, strong) NSMutableDictionary<NSString*,NSMutableArray*> *contactsDic;           //联系人名字首字母:联系人数组
 @property (nonatomic, strong) NSArray *indexAlphabet;   //索引字母表
-@property (nonatomic, copy) NSArray *emergencyContacts;  //紧急联系人
+@property (nonatomic, copy) NSMutableArray *emergencyContacts;  //紧急联系人
+@property (nonatomic, copy) NSString *myNewcontactName;    //新联系人名字
+@property (nonatomic, copy) NSString *myNewcontactPhoneNum; //新联系人电话
 @end
 
 @implementation MDEmergencyContactsViewController
@@ -39,6 +41,7 @@ static CGFloat kSectionFooterHeight = 1;
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[MDEmergencyContactsManager shareInstance] removeListener:self];
 }
 
 - (void)viewDidLoad {
@@ -53,14 +56,10 @@ static CGFloat kSectionFooterHeight = 1;
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveKeyboardShowNotification:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveKeyboardHideNotification:) name:UIKeyboardWillHideNotification object:nil];
+    [[MDEmergencyContactsManager shareInstance] addListener:self];
     self.indexAlphabet = [UILocalizedIndexedCollation currentCollation].sectionIndexTitles;
     self.contactsDic = [NSMutableDictionary dictionaryWithCapacity:[self.indexAlphabet count]];
-    for (NSString *alphabet in self.indexAlphabet) {
-        NSMutableArray *mutArray = [NSMutableArray array];
-        [self.contactsDic setObject:mutArray forKey:alphabet];
-    }
-    self.emergencyContacts = [[MDEmergencyContactsManager shareInstance] getAllContacts];
-    [self classContacts];
+    [self reloadContactData];
 }
 
 - (void)initView
@@ -140,7 +139,7 @@ static CGFloat kSectionFooterHeight = 1;
         [self performSegueWithIdentifier:@"showLocalContacts" sender:sender];
     }];
     UIAlertAction *newContact = [UIAlertAction actionWithTitle:@"创建联系人" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        [self showCreateNewContactView];
     }];
     [actionSheet addAction:cancel];
     [actionSheet addAction:addContactFromLocalContacts];
@@ -295,6 +294,7 @@ static CGFloat kSectionFooterHeight = 1;
 
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    MDEmergencyContact *contact = [self getContactWithIndexPath:indexPath];
     UITableViewRowAction * deleAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
         
         UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定要删除该联系人吗" preferredStyle:UIAlertControllerStyleAlert];
@@ -305,6 +305,7 @@ static CGFloat kSectionFooterHeight = 1;
         
         UIAlertAction * exitAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             [tableView setEditing:NO animated:YES];
+            [[MDEmergencyContactsManager shareInstance] deleteContact:contact];
         }];
         
         [alertController addAction:cancelAction];
@@ -329,6 +330,65 @@ static CGFloat kSectionFooterHeight = 1;
     [self resignKeyboard];
 }
 
+#pragma mark - MDEmergencyContactsListener
+
+- (void)contactDidModified:(MDEmergencyContact *)contact success:(BOOL)success
+{
+    if (!success) {
+        return;
+    }
+    NSUInteger index = NSNotFound;
+    for (int i = 0 ;i<[self.emergencyContacts count]; i++) {
+        MDEmergencyContact *oldContact = self.emergencyContacts[i];
+        if (oldContact.contactId == contact.contactId) {
+            index = i;
+            break;
+        }
+    }
+    if (index != NSNotFound) {
+        MDEmergencyContact *oldContact = self.emergencyContacts[index];
+        oldContact.contactName = contact.contactName;
+        oldContact.phoneNumber = contact.phoneNumber;
+        [self.contactsTableView reloadData];
+    }
+    else {
+        [self reloadContactData];
+    }
+}
+
+- (void)contactDidDelete:(MDEmergencyContact *)contact success:(BOOL)success
+{
+    if (!success) {
+        return;
+    }
+    NSUInteger index = NSNotFound;
+    for (int i = 0 ;i<[self.emergencyContacts count]; i++) {
+        MDEmergencyContact *oldContact = self.emergencyContacts[i];
+        if (oldContact.contactId == contact.contactId) {
+            index = i;
+            break;
+        }
+    }
+    if (index != NSNotFound) {
+        [self.emergencyContacts removeObjectAtIndex:index];
+        self.contactsDic = [[self classContactsWithNewContacts:self.emergencyContacts] mutableCopy];
+        [self.contactsTableView reloadData];
+    }
+    else {
+        [self reloadContactData];
+    }
+}
+
+- (void)contactDidAdded:(MDEmergencyContact *)contact success:(BOOL)success
+{
+    if (!success) {
+        return;
+    }
+    [self.emergencyContacts addObject:contact];
+    self.contactsDic = [[self classContactsWithNewContacts:self.emergencyContacts] mutableCopy];
+    [self.contactsTableView reloadData];
+}
+
 #pragma mark - privateFunction
 
 - (MDEmergencyContact *)getContactWithIndexPath:(NSIndexPath*)indexPath
@@ -342,25 +402,40 @@ static CGFloat kSectionFooterHeight = 1;
     return nil;
 }
 
+- (void)reloadContactData
+{
+    [[MDEmergencyContactsManager shareInstance] getAllContactsFromDB:^(NSArray<MDEmergencyContact *> *contacts) {
+        self.emergencyContacts = [NSMutableArray arrayWithArray:contacts];
+        self.contactsDic = [[self classContactsWithNewContacts:self.emergencyContacts] mutableCopy];
+        [self.contactsTableView reloadData];
+    }];
+}
+
 
 /**
  对所有联系人根据名字首字母进行分类
  */
-- (void)classContacts
+- (NSDictionary*)classContactsWithNewContacts:(NSArray*)newContacts
 {
+    NSMutableDictionary *mutaDic = [NSMutableDictionary dictionary];
+    NSArray *indexAlphabet = [UILocalizedIndexedCollation currentCollation].sectionIndexTitles;
+    for (NSString *alphabet in indexAlphabet) {
+        NSMutableArray *mutArray = [NSMutableArray array];
+        [mutaDic setObject:mutArray forKey:alphabet];
+    }
     //获得当前UILocalizedIndexedCollation对象并且引用赋给collation,A-Z的数据
     UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
     //获得索引数和section标题数
     NSInteger index, sectionTitlesCount = [[collation sectionTitles] count];
     
     //将用户数据进行分类，存储到对应的sesion数组中
-    for (MDEmergencyContact *contcts in self.emergencyContacts) {
+    for (MDEmergencyContact *contcts in newContacts) {
         
         //根据timezone的localename，获得对应的的section number
         NSInteger sectionNumber = [collation sectionForObject:contcts collationStringSelector:@selector(contactName)];
         
         //获得section的数组
-        NSMutableArray *sectionUserObjs = [self.contactsDic objectForKey:[collation sectionIndexTitles][sectionNumber]];
+        NSMutableArray *sectionUserObjs = [mutaDic objectForKey:[collation sectionIndexTitles][sectionNumber]];
         
         //添加内容到section中
         [sectionUserObjs addObject:contcts];
@@ -370,15 +445,58 @@ static CGFloat kSectionFooterHeight = 1;
     for (index = 0; index < sectionTitlesCount; index++) {
         NSString *alphabet = [collation sectionIndexTitles][index];
         
-        NSMutableArray *userObjsArrayForSection = [self.contactsDic objectForKey:alphabet];
+        NSMutableArray *userObjsArrayForSection = [mutaDic objectForKey:alphabet];
         
         //获得排序结果
         NSArray *sortedUserObjsArrayForSection = [collation sortedArrayFromArray:userObjsArrayForSection collationStringSelector:@selector(contactName)];
         
         //替换原来数组
-        [self.contactsDic setObject:[sortedUserObjsArrayForSection mutableCopy] forKey:alphabet];
+        [mutaDic setObject:[sortedUserObjsArrayForSection mutableCopy] forKey:alphabet];
     }
+    return mutaDic;
 }
 
+- (void)showCreateNewContactView
+{
+    UIAlertController *alertController =  [UIAlertController alertControllerWithTitle:@"创建联系人" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        MDEmergencyContact *contact = [[MDEmergencyContact alloc] init];
+        contact.contactName = self.myNewcontactName;
+        contact.phoneNumber = self.myNewcontactPhoneNum;
+        [[MDEmergencyContactsManager shareInstance] saveNewContact:contact];
+    }];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"姓名";
+        textField.text = self.myNewcontactName;
+        textField.keyboardType = UIKeyboardTypeDefault;
+        [textField addTarget:self action:@selector(inputNewContactName:) forControlEvents:UIControlEventEditingChanged];
+    }];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.text = self.myNewcontactPhoneNum;
+        textField.keyboardType = UIKeyboardTypePhonePad;
+        textField.placeholder = @"手机号码";
+        [textField addTarget:self action:@selector(inputNewContactPhoneNum:) forControlEvents:UIControlEventEditingChanged];
+    }];
+    [alertController addAction:cancel];
+    [alertController addAction:confirm];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)inputNewContactName:(UITextField*)textfield
+{
+    self.myNewcontactName = textfield.text;
+}
+
+- (void)inputNewContactPhoneNum:(UITextField*)textfield
+{
+    self.myNewcontactPhoneNum = textfield.text;
+}
+
+- (void)setEmergencyContacts:(NSMutableArray *)emergencyContacts
+{
+    _emergencyContacts = emergencyContacts;
+}
 
 @end

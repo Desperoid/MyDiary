@@ -27,7 +27,7 @@ static NSString * const kprohibition       = @"禁止事项";
 @implementation MDHomeTableListItem
 @end
 
-@interface MDHomeViewController () <UITextFieldDelegate>
+@interface MDHomeViewController () <UITextFieldDelegate, MDEmergencyContactsListener>
 @property (weak, nonatomic) IBOutlet UITableView *homeTableView;
 @property (nonatomic, strong) NSMutableArray<MDHomeTableListItem*> *listItemsArray;  //tableView表单选项
 @property (weak, nonatomic) IBOutlet UIButton *settingButton;     //设置按钮
@@ -48,6 +48,7 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[MDEmergencyContactsManager shareInstance] removeListener:self];
 }
 
 - (void)viewDidLoad {
@@ -57,7 +58,7 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
     //监听键盘
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveKeyBoradShowNotification:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveKeyBoradHideNotification:) name:UIKeyboardWillHideNotification object:nil];
-    
+    [[MDEmergencyContactsManager shareInstance] addListener:self];
     [self initData];
     [self initView];
 }
@@ -83,7 +84,11 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
     
     MDHomeTableListItem *contacts = [[MDHomeTableListItem alloc] init];
     contacts.listItemName = kEmergencyContacts;
-    contacts.listItemCount = [[[MDEmergencyContactsManager shareInstance] getAllContacts] count];
+    contacts.listItemCount = 0;
+    [[MDEmergencyContactsManager shareInstance] getContactsCount:^(NSInteger count) {
+        contacts.listItemCount = count;
+        [self.homeTableView reloadData];
+    }];
     [self.listItemsArray addObject:contacts];
     
     MDHomeTableListItem *diary = [[MDHomeTableListItem alloc] init];
@@ -237,6 +242,33 @@ static NSString *const kHomeTableViewCellIdentifier = @"homeTableViewCellIdentif
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self resignKeyboard];
+}
+
+#pragma mark MDEmergencyContactsListener
+- (void)contactDidAdded:(MDEmergencyContact *)contact success:(BOOL)success
+{
+    [[MDEmergencyContactsManager shareInstance] getContactsCount:^(NSInteger count) {
+        for (MDHomeTableListItem *item in self.listItemsArray) {
+            if ([item.listItemName isEqualToString:kEmergencyContacts]) {
+                item.listItemCount = count;
+                break;
+            }
+        }
+        [self.homeTableView reloadData];
+    }];
+}
+
+- (void)contactDidDelete:(MDEmergencyContact *)contact success:(BOOL)success
+{
+    [[MDEmergencyContactsManager shareInstance] getContactsCount:^(NSInteger count) {
+        for (MDHomeTableListItem *item in self.listItemsArray) {
+            if ([item.listItemName isEqualToString:kEmergencyContacts]) {
+                item.listItemCount = count;
+                break;
+            }
+        }
+        [self.homeTableView reloadData];
+    }];
 }
 
 #pragma mark - segue
