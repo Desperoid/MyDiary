@@ -8,10 +8,9 @@
 
 #import "MDEmergencyContactsManager.h"
 #import "MDDBManager.h"
-#import "WeakObject.h"
 
 @interface MDEmergencyContactsManager ()
-@property (nonatomic, strong) NSMutableArray<WeakObject*> *listeners;
+@property (nonatomic, strong) NSHashTable *listeners;
 @property (nonatomic, strong) NSMutableArray *allContacts;
 @property (nonatomic, strong) dispatch_queue_t queue;
 @end
@@ -36,17 +35,7 @@
 - (instancetype)initPrivate
 {
     if (self = [super init]) {
-        self.listeners = [NSMutableArray array];
-//        _allContacts = [NSMutableArray array];
-//        MDEmergencyContact *contact = [[MDEmergencyContact alloc] init];
-//        contact.contactName = @"TAKI";
-//        contact.phoneNumber = @"425-845156";
-//        [_allContacts addObject:contact];
-//        MDEmergencyContact *contact1 = [[MDEmergencyContact alloc] init];
-//        contact1.contactName = @"TAKI";
-//        contact1.phoneNumber = @"425-845156";
-//        [_allContacts addObject:contact1];
-        
+        self.listeners = [NSHashTable weakObjectsHashTable];
         self.queue = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL_WITH_AUTORELEASE_POOL);
         [self readAllContactsFromDataBase];
     }
@@ -58,19 +47,15 @@
 - (void)addListener:(id<MDEmergencyContactsListener>)listener
 {
    
-    WeakObject *wo = [[WeakObject alloc] init];
-    wo.insideObject = listener;
     @synchronized (self) {
-        [self.listeners addObject:wo];
+        [self.listeners addObject:listener];
     }
 }
 
 - (void)removeListener:(id<MDEmergencyContactsListener>)listener
 {
-    WeakObject *wo = [[WeakObject alloc] init];
-    wo.insideObject = listener;
     @synchronized (self) {
-        [self.listeners removeObject:wo];
+        [self.listeners removeObject:listener];
     }
 }
 -(void)getAllContactsFromDB:(void (^)(NSArray<MDEmergencyContact *> *))completeBlock
@@ -150,8 +135,7 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         @synchronized (self) {
-            for (WeakObject* wo in self.listeners) {
-                id<MDEmergencyContactsListener> listener = wo.insideObject;
+            for (id<MDEmergencyContactsListener> listener in self.listeners) {
                 if (listener && [listener respondsToSelector:selector]) {
                     MDEmergencyContact *param1 = contact;
                     BOOL param2 = success;

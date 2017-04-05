@@ -18,7 +18,6 @@
 		D07203F41E3086E800762208 /* MDMemoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07203F21E3086E800762208 /* MDMemoTableViewCell.xib */; };
 		D07327EF1E710BDA00BDD6F7 /* MDLocalContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07327EE1E710BDA00BDD6F7 /* MDLocalContactsController.m */; };
 		D07D0E361E25F65C00B7238E /* MDDiaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D0E351E25F65C00B7238E /* MDDiaryViewController.m */; };
-		D07D9F931E7A8D48003DF662 /* WeakObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D07D9F921E7A8D48003DF662 /* WeakObject.m */; };
 		D082B1371E2EFFD200C6DA9F /* MDDiaryThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D082B1361E2EFFD200C6DA9F /* MDDiaryThemeManager.m */; };
 		D085FDDE1E4859430038F31A /* MDFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D085FDDD1E4859430038F31A /* MDFileManager.m */; };
 		D0875AEF1E5EC948008987F6 /* MDDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0875AEE1E5EC948008987F6 /* MDDBManager.m */; };
@@ -45,6 +44,7 @@
 		D0DDE4431E27B95900E3BEF9 /* MDCalendarDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DDE4421E27B95900E3BEF9 /* MDCalendarDayView.m */; };
 		D0DDE4451E27B96A00E3BEF9 /* MDCalendarDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0DDE4441E27B96A00E3BEF9 /* MDCalendarDayView.xib */; };
 		D0DDE4481E27E63400E3BEF9 /* MDDateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DDE4471E27E63400E3BEF9 /* MDDateHelper.m */; };
+		D0F48A441E94F48B00BA9369 /* MDWriteDiaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F48A431E94F48B00BA9369 /* MDWriteDiaryView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,8 +69,6 @@
 		D07327EE1E710BDA00BDD6F7 /* MDLocalContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDLocalContactsController.m; sourceTree = "<group>"; };
 		D07D0E341E25F65C00B7238E /* MDDiaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDiaryViewController.h; sourceTree = "<group>"; };
 		D07D0E351E25F65C00B7238E /* MDDiaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDiaryViewController.m; sourceTree = "<group>"; };
-		D07D9F911E7A8D48003DF662 /* WeakObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeakObject.h; sourceTree = "<group>"; };
-		D07D9F921E7A8D48003DF662 /* WeakObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeakObject.m; sourceTree = "<group>"; };
 		D082B1351E2EFFD200C6DA9F /* MDDiaryThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDiaryThemeManager.h; sourceTree = "<group>"; };
 		D082B1361E2EFFD200C6DA9F /* MDDiaryThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDiaryThemeManager.m; sourceTree = "<group>"; };
 		D085FDDC1E4859430038F31A /* MDFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDFileManager.h; sourceTree = "<group>"; };
@@ -118,6 +116,8 @@
 		D0DDE4441E27B96A00E3BEF9 /* MDCalendarDayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MDCalendarDayView.xib; sourceTree = "<group>"; };
 		D0DDE4461E27E63400E3BEF9 /* MDDateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDateHelper.h; sourceTree = "<group>"; };
 		D0DDE4471E27E63400E3BEF9 /* MDDateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDateHelper.m; sourceTree = "<group>"; };
+		D0F48A421E94F48B00BA9369 /* MDWriteDiaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDWriteDiaryView.h; sourceTree = "<group>"; };
+		D0F48A431E94F48B00BA9369 /* MDWriteDiaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDWriteDiaryView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,8 +287,6 @@
 				D085FDDD1E4859430038F31A /* MDFileManager.m */,
 				D0875AED1E5EC948008987F6 /* MDDBManager.h */,
 				D0875AEE1E5EC948008987F6 /* MDDBManager.m */,
-				D07D9F911E7A8D48003DF662 /* WeakObject.h */,
-				D07D9F921E7A8D48003DF662 /* WeakObject.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -369,6 +367,8 @@
 				D0DDE4411E27B95900E3BEF9 /* MDCalendarDayView.h */,
 				D0DDE4421E27B95900E3BEF9 /* MDCalendarDayView.m */,
 				D0DDE4441E27B96A00E3BEF9 /* MDCalendarDayView.xib */,
+				D0F48A421E94F48B00BA9369 /* MDWriteDiaryView.h */,
+				D0F48A431E94F48B00BA9369 /* MDWriteDiaryView.m */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -535,7 +535,6 @@
 				D0DDE4341E267EE600E3BEF9 /* MDDiaryManager.m in Sources */,
 				D085FDDE1E4859430038F31A /* MDFileManager.m in Sources */,
 				D0DDE4481E27E63400E3BEF9 /* MDDateHelper.m in Sources */,
-				D07D9F931E7A8D48003DF662 /* WeakObject.m in Sources */,
 				D0DDE4431E27B95900E3BEF9 /* MDCalendarDayView.m in Sources */,
 				D05B273D1E23269B00D9606E /* MDEmergencyContactsViewController.m in Sources */,
 				D08AA8081E24719F00F36EE6 /* MDEmergencyContactsManager.m in Sources */,
@@ -545,6 +544,7 @@
 				D0A6577F1E1E2D2800A40CB5 /* MDAppDelegate.m in Sources */,
 				D08AA80B1E24930F00F36EE6 /* MDBaseToolBar.m in Sources */,
 				D0A31A7E1E22260A0080CEF5 /* MDBaseViewController.m in Sources */,
+				D0F48A441E94F48B00BA9369 /* MDWriteDiaryView.m in Sources */,
 				D0A31A7F1E22260A0080CEF5 /* MDHomeViewController.m in Sources */,
 				D06A98051E2E2CD000BFCBE3 /* MDMemoViewController.m in Sources */,
 				D0DDE4401E27B6A900E3BEF9 /* MDDiaryCalendarView.m in Sources */,
