@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nCW-Nn-3en">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nCW-Nn-3en">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -404,12 +404,12 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEE-oB-M52" userLabel="Mood">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEE-oB-M52" userLabel="Mood">
                                                         <rect key="frame" x="305" y="55" width="18" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <state key="normal" image="ic_mood_happy"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OmL-eA-tBB" userLabel="Weather">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OmL-eA-tBB" userLabel="Weather">
                                                         <rect key="frame" x="341" y="52" width="24" height="24"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <state key="normal" image="ic_weather_cloud"/>
@@ -429,29 +429,53 @@
                                                     <constraint firstItem="a9f-9r-iCF" firstAttribute="leading" secondItem="dVf-hs-ePx" secondAttribute="leading" constant="8" id="weJ-e3-vEy"/>
                                                 </constraints>
                                             </view>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="dVf-hs-ePx" firstAttribute="width" secondItem="Fo5-Lf-v3y" secondAttribute="width" id="9z4-Xf-2VS"/>
-                                            <constraint firstItem="dVf-hs-ePx" firstAttribute="leading" secondItem="Fo5-Lf-v3y" secondAttribute="leading" id="Cbq-Rf-Mmg"/>
-                                            <constraint firstItem="dVf-hs-ePx" firstAttribute="top" secondItem="Fo5-Lf-v3y" secondAttribute="top" id="O6e-Pb-phE"/>
-                                        </constraints>
-                                    </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZsI-Ig-EVU" userLabel="CalendarView" customClass="MDDiaryCalendarView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="515"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHS-4W-a6f" userLabel="EntriesListView" customClass="MDEntriesListView">
-                                                <rect key="frame" x="0.0" y="-8" width="375" height="515"/>
+                                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ob9-T2-4rt">
+                                                <rect key="frame" x="0.0" y="84" width="375" height="431"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rln-Hg-ZPx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="431"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </view>
+                                                <blurEffect style="light"/>
+                                            </visualEffectView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CoR-GG-1a9" customClass="YYTextView">
+                                                <rect key="frame" x="0.0" y="84" width="375" height="431"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="cHS-4W-a6f" firstAttribute="height" secondItem="ZsI-Ig-EVU" secondAttribute="height" id="7bu-C6-pms"/>
-                                            <constraint firstItem="cHS-4W-a6f" firstAttribute="width" secondItem="ZsI-Ig-EVU" secondAttribute="width" id="8ak-iS-uic"/>
-                                            <constraint firstItem="cHS-4W-a6f" firstAttribute="centerY" secondItem="ZsI-Ig-EVU" secondAttribute="centerY" constant="-8" id="LmS-tU-p6B"/>
-                                            <constraint firstItem="cHS-4W-a6f" firstAttribute="centerX" secondItem="ZsI-Ig-EVU" secondAttribute="centerX" id="xOR-NF-hLB"/>
+                                            <constraint firstItem="Ob9-T2-4rt" firstAttribute="height" secondItem="CoR-GG-1a9" secondAttribute="height" id="3EE-3p-o1C"/>
+                                            <constraint firstItem="dVf-hs-ePx" firstAttribute="width" secondItem="Fo5-Lf-v3y" secondAttribute="width" id="9z4-Xf-2VS"/>
+                                            <constraint firstItem="dVf-hs-ePx" firstAttribute="leading" secondItem="Fo5-Lf-v3y" secondAttribute="leading" id="Cbq-Rf-Mmg"/>
+                                            <constraint firstAttribute="bottom" secondItem="CoR-GG-1a9" secondAttribute="bottom" id="HFM-mj-Iou"/>
+                                            <constraint firstItem="CoR-GG-1a9" firstAttribute="top" secondItem="dVf-hs-ePx" secondAttribute="bottom" id="K5n-jD-3rC"/>
+                                            <constraint firstAttribute="trailing" secondItem="CoR-GG-1a9" secondAttribute="trailing" id="MBb-Qk-xiD"/>
+                                            <constraint firstItem="dVf-hs-ePx" firstAttribute="top" secondItem="Fo5-Lf-v3y" secondAttribute="top" id="O6e-Pb-phE"/>
+                                            <constraint firstItem="Ob9-T2-4rt" firstAttribute="centerY" secondItem="CoR-GG-1a9" secondAttribute="centerY" id="UH9-f6-FNZ"/>
+                                            <constraint firstItem="Ob9-T2-4rt" firstAttribute="centerX" secondItem="CoR-GG-1a9" secondAttribute="centerX" id="YDT-C2-OsJ"/>
+                                            <constraint firstItem="CoR-GG-1a9" firstAttribute="leading" secondItem="Fo5-Lf-v3y" secondAttribute="leading" id="Yf4-iL-Lhq"/>
+                                            <constraint firstItem="Ob9-T2-4rt" firstAttribute="width" secondItem="CoR-GG-1a9" secondAttribute="width" id="ff7-IR-mcw"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="latitudeLabel" destination="iiO-Tq-EZw" id="1FH-PA-tgt"/>
+                                            <outlet property="locationLabel" destination="RmI-I7-nZn" id="Z4P-vh-BaR"/>
+                                            <outlet property="longitudeLabel" destination="gsL-h7-gaK" id="z3q-Mr-skP"/>
+                                            <outlet property="moodButton" destination="eEE-oB-M52" id="GAC-XW-9Ox"/>
+                                            <outlet property="saveButton" destination="khj-Bt-mtH" id="IHN-iC-YvK"/>
+                                            <outlet property="textView" destination="CoR-GG-1a9" id="Upb-PL-Sjg"/>
+                                            <outlet property="timeLabel" destination="a9f-9r-iCF" id="lu6-HD-a0J"/>
+                                            <outlet property="weatherButton" destination="OmL-eA-tBB" id="c0m-Co-ltc"/>
+                                            <outlet property="writeDiayHeaderView" destination="dVf-hs-ePx" id="TKP-yJ-scL"/>
+                                        </connections>
+                                    </view>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZsI-Ig-EVU" userLabel="CalendarView" customClass="MDDiaryCalendarView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="515"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHS-4W-a6f" userLabel="EntriesListView" customClass="MDEntriesListView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="515"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

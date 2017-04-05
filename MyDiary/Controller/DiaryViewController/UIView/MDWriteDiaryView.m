@@ -7,11 +7,12 @@
 //
 
 #import "MDWriteDiaryView.h"
-#import <YYText.h>
+
 #import "MDDiaryThemeManager.h"
 
 @interface MDWriteDiaryView () <YYTextViewDelegate>
-@property (nonatomic, strong) YYTextView *textView;
+
+
 @end
 
 @implementation MDWriteDiaryView
