@@ -24,6 +24,7 @@
 		D08AA8051E246F0800F36EE6 /* MDEmergencyContact.m in Sources */ = {isa = PBXBuildFile; fileRef = D08AA8041E246F0800F36EE6 /* MDEmergencyContact.m */; };
 		D08AA8081E24719F00F36EE6 /* MDEmergencyContactsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D08AA8071E24719F00F36EE6 /* MDEmergencyContactsManager.m */; };
 		D08AA80B1E24930F00F36EE6 /* MDBaseToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D08AA80A1E24930F00F36EE6 /* MDBaseToolBar.m */; };
+		D08BAE001E96337C002464A2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D08BADFF1E96337C002464A2 /* CoreLocation.framework */; };
 		D0A31A7E1E22260A0080CEF5 /* MDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A31A751E22260A0080CEF5 /* MDBaseViewController.m */; };
 		D0A31A7F1E22260A0080CEF5 /* MDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A31A791E22260A0080CEF5 /* MDHomeViewController.m */; };
 		D0A31A801E22260A0080CEF5 /* MDHomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A31A7C1E22260A0080CEF5 /* MDHomeTableViewCell.m */; };
@@ -81,6 +82,7 @@
 		D08AA8071E24719F00F36EE6 /* MDEmergencyContactsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDEmergencyContactsManager.m; sourceTree = "<group>"; };
 		D08AA8091E24930F00F36EE6 /* MDBaseToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBaseToolBar.h; sourceTree = "<group>"; };
 		D08AA80A1E24930F00F36EE6 /* MDBaseToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBaseToolBar.m; sourceTree = "<group>"; };
+		D08BADFF1E96337C002464A2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D0A31A741E22260A0080CEF5 /* MDBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBaseViewController.h; sourceTree = "<group>"; };
 		D0A31A751E22260A0080CEF5 /* MDBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBaseViewController.m; sourceTree = "<group>"; };
 		D0A31A781E22260A0080CEF5 /* MDHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDHomeViewController.h; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D08BAE001E96337C002464A2 /* CoreLocation.framework in Frameworks */,
 				238BE7A8E5C3A973E2FE5ED7 /* libPods-MyDiary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +399,7 @@
 		D8C5D1CF49F0033B10C44C5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D08BADFF1E96337C002464A2 /* CoreLocation.framework */,
 				94BDF0A8D8B4E86D918D0213 /* libPods-MyDiary.a */,
 			);
 			name = Frameworks;

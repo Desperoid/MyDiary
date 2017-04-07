@@ -19,6 +19,7 @@
 
 @interface MDMemoManager ()
 @property (nonatomic, strong) NSMutableArray<MDMemo*> *allMemmo;
+@property (nonatomic, strong) NSHashTable *listeners;
 @end
 
 @implementation MDMemoManager
@@ -41,21 +42,7 @@
 - (instancetype)initPrivate
 {
     if (self = [super init]) {
-        MDMemoEntry *entry1 = [[MDMemoEntry alloc] init];
-        MDMemoEntry *entry2 = [[MDMemoEntry alloc] init];
-        MDMemoEntry *entry3 = [[MDMemoEntry alloc] init];
-        
-        entry1.entryName = @"胡萝卜";
-        entry1.finished = @(YES);
-        entry2.entryName = @"茄子";
-        entry2.finished = @(NO);
-        entry3.entryName = @"黄瓜";
-        entry3.finished = @(YES);
-        
-        MDMemo *memo = [[MDMemo alloc] init];
-        memo.memoName = @"禁止事项";
-        memo.memoEntries = @[entry1, entry2, entry3];
-        self.allMemmo = [NSMutableArray arrayWithArray:[self readAllMemo]];
+        self.listeners = [NSHashTable weakObjectsHashTable];
     }
     return self;
 }
@@ -179,5 +166,14 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:@(entry.finished) forKey:entry.entryName];
     return dic;
+}
+#pragma mark MDMemoManagerListener
+- (void)notifyListenersMemoModified:(MDMemo*)memo
+{
+    for (id<MDMemoManagerListener> listener in self.listeners) {
+        if (listener && [listener respondsToSelector:@selector(onMemoModified:)]) {
+            [listener onMemoModified:memo];
+        }
+    }
 }
 @end

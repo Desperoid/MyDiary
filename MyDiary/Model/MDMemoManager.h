@@ -12,9 +12,17 @@
 @property (nonatomic, assign) BOOL finished;
 @end
 
+
+
 @interface MDMemo : NSObject
 @property (nonatomic, copy) NSString *memoName;
 @property (nonatomic, copy) NSArray<MDMemoEntry*> *memoEntries;
+@end
+
+@protocol MDMemoManagerListener <NSObject>
+
+- (void)onMemoModified:(MDMemo*)Memo;
+
 @end
 
 @interface MDMemoManager : NSObject
